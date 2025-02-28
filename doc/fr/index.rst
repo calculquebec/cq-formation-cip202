@@ -3,16 +3,20 @@ Parallélisme de données sur les grappes
 
 `English <../en/index.html>`_
 
-Cet atelier de niveau intermédiaire (CIP202) est la suite de *Tâches de
-calcul : ressources et suivi* (CIP201). Nous y explorons une branche
-particulière du calcul informatique de pointe.
+Cet atelier de niveau intermédiaire (CIP202) est la suite de l'atelier
+`Tâches de calcul : ressources et suivi (CIP201)
+<https://calculquebec.github.io/cq-formation-cip201/fr/index.html>`_.
+Nous y explorons une branche du calcul haute-performance : le *parallélisme de
+données* avec des outils permettant de gérer un grand nombre de tâches lorsque
+le projet de recherche requiert plusieurs centaines de résultats.
 
 L’atelier débute par une introduction au parallélisme de données.
 
 La section suivante présente ... (Job Arrays)
 
-Une autre façon de multiplier les cas de calcul sans nécessairement augmenter
-le nombre de tâches Slurm ... (GNU Parallel)
+Pour **effectuer des balayages de paramètres** sans nécessairement augmenter le
+nombre de tâches Slurm, l'outil :doc:`GNU Parallel <gnu_parallel>` offre
+plusieurs possibilités.
 
 D'autres outils sont disponibles ...
 
