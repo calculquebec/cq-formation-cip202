@@ -64,17 +64,8 @@ Voir la page de manuel pour les options (appuyez sur :kbd:`q` pour quitter) :
 
     man parallel
 
-Modes d’utilisation
--------------------
-
-Pour cette partie, allez dans le répertoire des exemples avec :
-
-.. code-block:: bash
-
-    cd ~/cq-formation-cip202-main/lab/gnu-parallel
-
-Une seule séquence de paramètres
-''''''''''''''''''''''''''''''''
+Une seule liste de valeurs
+--------------------------
 
 Le paramètre changeant est donné via une paire d’``{}`` :
 
@@ -91,8 +82,98 @@ Bash ``{a..b}`` :
     parallel echo fichier{}.txt ::: {1..4}
     parallel echo fichier{}.txt ::: {01..10}
 
+Une même valeur peut être répétée dans le gabarit de commande :
+
+.. code-block:: bash
+
+    parallel echo {}. fichier{}.txt ::: {01..10}
+
+Ensuite, si votre gabarit de commande doit contenir des caractères normalement
+interprétés par Bash, par exemple ``$``, ``|``, ``>``, ``&`` et ``;``, il faut
+les mettre entre ``''``. Ceci assure que leur interprétation sera faite
+uniquement au moment où GNU Parallel exécutera les commandes en parallèle.
+
+.. code-block:: bash
+
+    parallel echo {}. '>' '$'SCRATCH/fichier{}.txt ::: {01..10}
+    # Validation
+    cat $SCRATCH/fichier*.txt
+
+Enfin, si aucune variable ne doit être résolue au moment d’appeler la commande
+``parallel``, c'est tout le gabarit qui peut être entre ``''``.
+
+.. code-block:: bash
+
+    parallel 'echo {}. > $SCRATCH/fic-{}.txt' ::: {01..10}
+    # Validation
+    cat $SCRATCH/fic-*.txt
+
+Exercice
+''''''''
+
+**Objectifs**
+
+- Transformer des boucles en des appels à la commande ``parallel``.
+- Préparer le jeu de données : des séquences aléatoires d’ADN.
+
+**Instructions**
+
+#. Allez dans le répertoire de l’exercice avec ``cd
+   ~/cq-formation-cip202-main/lab/bio-info``.
+#. Éditez le fichier ``gen-seq.sh`` :
+
+   #. Demandez deux (2) cœurs CPU dans l’entête ``SBATCH``.
+   #. Transformez la commande ``python gen_spec.py ...`` de sorte à utiliser la
+      commande ``parallel`` plutôt que la boucle ``for`` :
+
+      #. Ajoutez ``parallel`` au début et enlevez l’indentation.
+      #. Remplacez les deux itérateurs ``$spec`` par ``{}``.
+      #. Protégez le caractère ``>``, s’il y a lieu.
+      #. Ajoutez ``:::``, ainsi que les lettres de A à D, inclusivement.
+
+   #. Refaites les mêmes étapes pour la commande ``makeblastdb ...``.
+   #. Refaites les mêmes étapes pour la commande ``python gen_test.py ...``,
+      mais avec les différences suivantes :
+
+      - Remplacez les deux itérateurs ``$test`` par ``{}``.
+      - Fournissez les 16 lettres de K à Z, inclusivement.
+
+   #. Supprimez les lignes ``for`` et ``done`` (:kbd:`Ctrl+K` dans ``nano``).
+
+#. Sauvegardez le script et soumettez-le à l’ordonnanceur.
+#. Au final, validez la présence des fichiers suivants :
+
+   - ``spec_A.fa`` à ``spec_D.fa``, inclusivement.
+   - ``spec_A.n*`` à ``spec_D.n*``, inclusivement.
+   - ``chr_K.fa`` à ``chr_Z.fa``, inclusivement.
+
+#. En cas de problème, tentez de le régler ou soumettez le script
+   ``solution/gen-seq.sh`` à l’ordonnanceur.
+
+.. note::
+
+    L’encodage numérique de brins d’ADN se fait au moyen des quatre codes
+    ``A``, ``C``, ``G`` et ``T`` qui correspondent aux quatre bases des
+    molécules d’ADN. Bien qu’une séquence complète soit faite de milliards de
+    bases, les séquenceurs sont fiables que sur de courtes lectures. Ainsi,
+    une collection de fichiers Fasta (``*.fa``) contient de nombreux morceaux
+    d’ADN qui peuvent se chevaucher. Or, étant donné les nombreuses
+    combinaisons possibles, en plus d’un certain taux d’erreurs dans les
+    données, reconstruire une longue séquence d’ADN est tout un défi!
+
+    Parfois, le problème est plus *simple*, c’est-à-dire qu’il suffit
+    d’identifier à quelle espèce appartient le brin d’ADN. Dans ce cas, il
+    suffit de tester les brins inconnus avec des bases de données de séquences
+    connues. C’est essentiellement ce qui a été préparé dans cet exercice.
+
 Combinaisons de paramètres
-''''''''''''''''''''''''''
+--------------------------
+
+Pour cette partie, allez dans le répertoire des exemples avec :
+
+.. code-block:: bash
+
+    cd ~/cq-formation-cip202-main/lab/gnu-parallel
 
 **a)** Lorsqu’il y a **plusieurs séquences de paramètres à combiner**, on peut
 utiliser des paires d’accolades numérotées telles que ``{1}``, ``{2}``, etc. :
@@ -134,7 +215,7 @@ Le script de tâche aura une commande ``parallel`` simplifiée :
     sbatch prll-exec-cmd.sh
 
 Nombre limité de cas en parallèles
-''''''''''''''''''''''''''''''''''
+----------------------------------
 
 Le paramètre ``--jobs`` permet de forcer une limite sur le nombre de processus
 lancés à la fois. Par exemple, 8 cas avec 2 processus en simultané :
