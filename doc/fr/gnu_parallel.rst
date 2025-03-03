@@ -244,12 +244,34 @@ Exercice - Aligner des séquences d’ADN
 #. Au final, il devrait y avoir 64 fichiers dans le répertoire ``res_prll``.
    Certains sont plus gros que d’autres, car des aligments ont été trouvés.
 
-Nombre limité de cas en parallèles
-----------------------------------
+Nombre limité de cas en parallèle
+---------------------------------
 
-Le paramètre ``--jobs`` permet de forcer une limite sur le nombre de processus
-lancés à la fois. Par exemple, 8 cas avec 2 processus en simultané :
+Pour les calculs multi-fils (de 2 à 8 cœurs CPU), la commande ``parallel`` ne
+doit pas lancer autant de processus qu’il y a de cœurs CPU sur le nœeud ; on se
+retrouverait avec plusieurs fils par cœur CPU. Ainsi, la première chose à faire
+est de réduire le nombre de processus en simultané.
+
+Pour ce faire, on utilise le paramètre ``-j`` ou ``--jobs`` qui permet de
+forcer une limite sur le nombre de processus lancés à la fois. Par exemple,
+10 cas à traiter avec un maximum de deux processus en simultané :
 
 .. code-block:: bash
 
-    parallel --jobs 2 'echo {} && sleep 3' ::: {1..8}
+    parallel -j 2 'echo {} && sleep 3' ::: {1..10}
+
+Dans un script de tâche OpenMP contenant :
+
+.. code-block:: bash
+
+    #SBATCH --nodes=1 --ntasks-per-node=16 --cpus-per-task=4
+
+Nous aurions une commande comme celle-ci :
+
+.. code-block:: bash
+
+    parallel \
+        -j $SLURM_NTASKS_PER_NODE \
+        --env OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK \
+        ./app <options> {} \
+        ::: val1 val2 ...
