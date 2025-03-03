@@ -108,8 +108,8 @@ Enfin, si aucune variable ne doit être résolue au moment d’appeler la comman
     # Validation
     cat $SCRATCH/fic-*.txt
 
-Exercice
-''''''''
+Exercice - Préparer des séquences d’ADN
+'''''''''''''''''''''''''''''''''''''''
 
 **Objectifs**
 
@@ -213,6 +213,36 @@ Le script de tâche aura une commande ``parallel`` simplifiée :
     # parallel < cmd.txt
     cat prll-exec-cmd.sh
     sbatch prll-exec-cmd.sh
+
+Exercice - Aligner des séquences d’ADN
+''''''''''''''''''''''''''''''''''''''
+
+**Objectifs**
+
+- Utiliser deux listes de valeurs dans une commande ``parallel``.
+- En ayant des séquences d’ADN d’espèces connues et inconnues, calculer
+  l’alignement de toutes les combinaisons ``{A,B,C,D}`` x
+  ``{K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}``, ce qui donne 64 combinaisons.
+
+**Instructions**
+
+#. Allez dans le répertoire de l’exercice avec ``cd
+   ~/cq-formation-cip202-main/lab/bio-info``.
+#. Éditez le fichier ``blastn-parallel.sh`` :
+
+   #. Demandez quatre (4) cœurs CPU dans l’entête ``SBATCH``.
+   #. Séparez le gabarit de commande et les deux listes de valeurs par des
+      séparateurs ``:::``.
+   #. La première liste de lettres correspond aux espèces connues. Chaque
+      lettre est utilisée comme **suffixe** au nom de la base de données
+      ``spec_*`` et au nom du fichier de sortie ``res_prll/align_*_*``.
+   #. La deuxième liste de lettres correspond aux espèces inconnues. Chaque
+      lettre est utilisée **au milieu du nom** de fichier Fasta ``chr_*.fa``
+      et du fichier de sortie ``res_prll/align_*_*``.
+
+#. Sauvegardez le script et soumettez-le à l’ordonnanceur.
+#. Au final, il devrait y avoir 64 fichiers dans le répertoire ``res_prll``.
+   Certains sont plus gros que d’autres, car des aligments ont été trouvés.
 
 Nombre limité de cas en parallèles
 ----------------------------------
