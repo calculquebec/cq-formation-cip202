@@ -17,9 +17,9 @@ L’atelier débute par une introduction au parallélisme de données.
 
 La section suivante présente ... (Job Arrays)
 
-Pour répéter un calcul, par exemple un **balayage de paramètres**, sans
-augmenter le nombre de tâches SLURM, l'outil :doc:`GNU Parallel <gnu_parallel>`
-offre plusieurs possibilités.
+Pour répéter un calcul ou faire un **balayage de paramètres** sans augmenter le
+nombre de tâches Slurm, l'outil :doc:`GNU Parallel <gnu_parallel>` offre
+plusieurs possibilités.
 
 D'autres outils sont disponibles ...
 
