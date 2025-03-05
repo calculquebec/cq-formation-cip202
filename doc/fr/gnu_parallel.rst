@@ -196,8 +196,8 @@ ensuite ce nom de fichier :
 .. code-block:: bash
 
     # parallel -C ' ' echo '$(({1}*{2})) > prod_{1}x{2}' :::: param.txt
-    cat prll-exec-param.sh
-    sbatch prll-exec-param.sh
+    cat exec-param.sh
+    sbatch exec-param.sh
 
 **c)** Si on préfère valider la **liste des commandes dans un fichier texte**
 avant leur exécution sur un nœud de calcul :
@@ -211,8 +211,8 @@ Le script de tâche aura une commande ``parallel`` simplifiée :
 .. code-block:: bash
 
     # parallel < cmd.txt
-    cat prll-exec-cmd.sh
-    sbatch prll-exec-cmd.sh
+    cat exec-cmd.sh
+    sbatch exec-cmd.sh
 
 Exercice - Aligner des séquences d’ADN
 ''''''''''''''''''''''''''''''''''''''
@@ -235,13 +235,13 @@ Exercice - Aligner des séquences d’ADN
       séparateurs ``:::``.
    #. La première liste de lettres correspond aux espèces connues. Chaque
       lettre est utilisée comme **suffixe** au nom de la base de données
-      ``spec_*`` et au nom du fichier de sortie ``res_prll/align_*_*``.
+      ``spec_*`` et au nom du fichier de sortie ``results/align_*_*``.
    #. La deuxième liste de lettres correspond aux espèces inconnues. Chaque
       lettre est utilisée **au milieu du nom** de fichier Fasta ``chr_*.fa``
-      et du fichier de sortie ``res_prll/align_*_*``.
+      et du fichier de sortie ``results/align_*_*``.
 
 #. Sauvegardez le script et soumettez-le à l’ordonnanceur.
-#. Au final, il devrait y avoir 64 fichiers dans le répertoire ``res_prll``.
+#. Au final, il devrait y avoir 64 fichiers dans le répertoire ``results``.
    Certains sont plus gros que d’autres, car des aligments ont été trouvés.
 
 Nombre limité de cas en parallèle
