@@ -4,11 +4,11 @@ GNU Parallel
 `English <../en/gnu_parallel.html>`_
 
 Si votre projet de recherche implique de faire des balayages de paramètres avec
-de courts processus, une multitude de tâches Slurm n’est probablement `pas la
-meilleure solution <#pourquoi-pas-slurm>`_. En fait, devoir gérer de multiples
-combinaisons de paramètres est un défi en soi. Et c’est là que `GNU Parallel
-<https://docs.alliancecan.ca/wiki/GNU_Parallel/fr>`_ devient l’outil tout
-désigné.
+de courts processus (de 50 minutes et moins), une multitude de tâches Slurm
+n’est probablement `pas la meilleure solution <#pourquoi-pas-slurm>`_. En fait,
+devoir gérer de multiples combinaisons de paramètres est un défi en soi. Et
+c’est là que `GNU Parallel <https://docs.alliancecan.ca/wiki/GNU_Parallel/fr>`_
+devient l’outil tout désigné.
 
 GNU Parallel s’utilise via la commande ``parallel`` qui permet d’utiliser
 pleinement les ressources locales d’un nœud de calcul, et ce, en gérant
