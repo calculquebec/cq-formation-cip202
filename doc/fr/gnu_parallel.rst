@@ -47,7 +47,7 @@ Les avantages de GNU Parallel à considérer :
 
 - GNU Parallel peut `reprendre la séquence des cas de calcul
   <https://docs.alliancecan.ca/wiki/GNU_Parallel/fr#Suivi_des_commandes_ex.C3.A9cut.C3.A9es_ou_des_commandes_ayant_.C3.A9chou.C3.A9.3B_fonctionnalit.C3.A9s_de_red.C3.A9marrage>`_
-  en situation de fin hâtive de la tâche Slurm.
+  lorsque la tâche Slurm est interrompue.
 
 Syntaxe de la commande GNU Parallel
 -----------------------------------
