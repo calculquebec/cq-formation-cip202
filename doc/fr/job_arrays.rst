@@ -34,10 +34,9 @@ tâches :
 
     sleep 60
 
-Un script pour un vecteur de tâches contient l’option ``--array``, qui donne
-donne le nombre de répétitions de la tâche et assigne à chacune une valeur
-entière unique, ici de 1 à 10. Cet index est accessible avec
-``$SLURM_ARRAY_TASK_ID``.
+Un script pour un vecteur de tâches contient l’option ``--array``, qui spécifie
+les répétitions de la tâche et assigne à chacune une valeur entière unique, ici
+de 1 à 10. Cet index est accessible avec ``$SLURM_ARRAY_TASK_ID``.
 
 Ce script peut être soumis comme n’importe quel autre :
 
