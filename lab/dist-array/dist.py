@@ -14,7 +14,6 @@ std = np.random.rand() + 0.5
 dist = np.random.normal(mean, std, size = 1000)
 df = pd.DataFrame(dist)
 
-with open(output_filename, 'w') as f:
-    f.write(df.to_csv())
+df.to_csv(output_filename)
 print(f'Random normal distribution writen to {output_filename}.')
 print(df.describe())
