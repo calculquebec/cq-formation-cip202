@@ -30,7 +30,7 @@ tâches :
     #SBATCH --job-name=hello
     #SBATCH --array=1-10
 
-    echo "Hello from step $SLURM_ARRAY_TASK_ID"
+    echo "Hello from index $SLURM_ARRAY_TASK_ID"
 
     sleep 60
 
@@ -68,7 +68,7 @@ Chaque tâche a son propre fichier de sortie, à nouveau identifié par son inde
     [alice@narval1 hello-array]$ ls slurm-*.out
     slurm-40912550_1.out  slurm-40912550_2.out  slurm-40912550_3.out
     [alice@narval1 hello-array]$ cat slurm-40912550_3.out
-    Hello from step 3
+    Hello from index 3
 
 On peut annuler une des tâches du vecteur avec son index :
 
