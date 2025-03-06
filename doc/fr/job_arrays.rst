@@ -384,7 +384,7 @@ En plus d’être simple, cette approche des vecteurs de tâches multidimensionn
 est flexible :
 
 - Elle fonctionne peu importe le nombre de paramètres.
-- Le nombre de paramètre peut être changé aisément.
+- Le nombre de paramètres peut être changé aisément.
 - N’importe quelles combinaisons de paramètres peuvent être choisies.
 
   - Cela permet, entre autres, d’éviter de traiter des combinaisons que l’on
