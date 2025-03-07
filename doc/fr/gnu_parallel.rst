@@ -89,22 +89,24 @@ Une même valeur peut être répétée dans le gabarit de commande :
     parallel echo {}. fichier{}.txt ::: {01..10}
 
 Ensuite, si votre gabarit de commande doit contenir des caractères normalement
-interprétés par Bash, par exemple ``$``, ``|``, ``>``, ``&`` et ``;``, il faut
-les mettre entre ``''``. Ceci assure que leur interprétation sera faite
-uniquement au moment où GNU Parallel exécutera les commandes en parallèle.
+interprétés par Bash, par exemple ``$``, ``|``, ``>``, ``&`` et ``;``, on peut
+mettre tout le gabarit de commande entre ``''`` pour que l’interprétation de
+ces caractères soit faite uniquement au moment où GNU Parallel exécutera les
+commandes en parallèle :
 
 .. code-block:: bash
 
-    parallel echo {}. '>' '$'SCRATCH/fichier{}.txt ::: {01..10}
+    parallel 'echo {}. > $SCRATCH/fichier{}.txt' ::: {01..10}
     # Validation
     cat $SCRATCH/fichier*.txt
 
-Enfin, si aucune variable ne doit être résolue au moment d’appeler la commande
-``parallel``, c'est tout le gabarit qui peut être entre ``''``.
+Si jamais des variables doivent être résolues au moment d’appeler la commande
+``parallel``, c’est toujours possible de couper la chaîne de caractères en
+argument et d’y insérer par concaténation les variables voulues :
 
 .. code-block:: bash
 
-    parallel 'echo {}. > $SCRATCH/fic-{}.txt' ::: {01..10}
+    parallel 'echo {}. > '$SCRATCH'/fic-{}.txt' ::: {01..10}
     # Validation
     cat $SCRATCH/fic-*.txt
 
