@@ -67,26 +67,93 @@ Voir la page de manuel pour les options (appuyez sur :kbd:`q` pour quitter) :
 Une seule liste de valeurs
 --------------------------
 
-Le paramètre changeant est donné via une paire d’``{}`` :
+Le paramètre changeant est donné via une paire d’``{}``. Par exemple :
 
 .. code-block:: bash
+    :emphasize-lines: 1,10-15
 
-    parallel echo fichier{}.txt ::: 1 2 3 4
-    # parallel --citation  # S'engager à citer les développeurs
+    [alice@narval1 ~]$ parallel echo fichier{}.txt ::: 7 8 9 10 11 12
+    Academic tradition requires you to cite works you base your article on.
+    If you use programs that use GNU Parallel to process data for an article in a
+    scientific publication, please cite:
+
+    ...
+
+    To silence this citation notice: run 'parallel --citation' once.
+
+    fichier7.txt
+    fichier8.txt
+    fichier10.txt
+    fichier11.txt
+    fichier9.txt
+    fichier12.txt
+
+Tel que vu dans cet exemple, l’ordre d’affichage des résultats peut varier à
+cause de l’exécution des différents processus en simultané : leur durée peut
+varier et le système d’exploitation peut parfois favoriser légèrement certains
+processus.
+
+.. note::
+
+    Pour s’engager à citer les développeurs de GNU Parallel :
+
+    .. code-block:: bash
+        :emphasize-lines: 1,9
+
+        [alice@narval1 ~]$ parallel --citation
+        Academic tradition requires you to cite works you base your article on.
+        If you use programs that use GNU Parallel to process data for an article in a
+        scientific publication, please cite:
+
+        ...
+
+        Type: 'will cite' and press enter.
+        > will cite
+
+        ...
+
+        It is really appreciated. The citation notice is now silenced.
+
 
 On peut réécrire la première commande en utilisant l’expansion des accolades
 Bash ``{a..b}`` :
 
 .. code-block:: bash
 
-    parallel echo fichier{}.txt ::: {1..4}
-    parallel echo fichier{}.txt ::: {01..10}
+    [alice@narval1 ~]$ parallel echo fichier{}.txt ::: {7..12}
+    fichier7.txt
+    fichier8.txt
+    fichier9.txt
+    fichier10.txt
+    fichier11.txt
+    fichier12.txt
+
+
+Si nécessaire, on peut ajouter des zéros non significatifs aux nombres plus
+courts :
+
+.. code-block:: bash
+
+    [alice@narval1 ~]$ parallel echo fichier{}.txt ::: {07..12}
+    fichier07.txt
+    fichier08.txt
+    fichier09.txt
+    fichier10.txt
+    fichier11.txt
+    fichier12.txt
+
 
 Une même valeur peut être répétée dans le gabarit de commande :
 
 .. code-block:: bash
 
-    parallel echo {}. fichier{}.txt ::: {01..10}
+    [alice@narval1 ~]$ parallel echo {}. fichier{}.txt ::: {07..12}
+    07. fichier07.txt
+    08. fichier08.txt
+    09. fichier09.txt
+    10. fichier10.txt
+    11. fichier11.txt
+    12. fichier12.txt
 
 Ensuite, si votre gabarit de commande doit contenir des caractères normalement
 interprétés par Bash, par exemple ``$``, ``|``, ``>``, ``&`` et ``;``, on peut
@@ -96,19 +163,14 @@ commandes en parallèle :
 
 .. code-block:: bash
 
-    parallel 'echo {}. > $SCRATCH/fichier{}.txt' ::: {01..10}
-    # Validation
-    cat $SCRATCH/fichier*.txt
-
-Si jamais des variables doivent être résolues au moment d’appeler la commande
-``parallel``, c’est toujours possible de couper la chaîne de caractères en
-argument et d’y insérer par concaténation les variables voulues :
-
-.. code-block:: bash
-
-    parallel 'echo {}. > '$SCRATCH'/fic-{}.txt' ::: {01..10}
-    # Validation
-    cat $SCRATCH/fic-*.txt
+    [alice@narval1 ~]$ parallel 'echo {}. > $SCRATCH/fichier{}.txt' ::: {07..12}
+    [alice@narval1 ~]$ cat $SCRATCH/fichier*.txt
+    07.
+    08.
+    09.
+    10.
+    11.
+    12.
 
 Exercice - Préparer des séquences d’ADN
 '''''''''''''''''''''''''''''''''''''''
@@ -182,14 +244,29 @@ utiliser des paires d’accolades numérotées telles que ``{1}``, ``{2}``, etc.
 
 .. code-block:: bash
 
-    parallel echo fichier{1}{2}.txt ::: {01..10} ::: a b
+    [alice@narval1 gnu-parallel]$ parallel echo fichier{1}{2}.txt ::: {08..10} ::: a b
+    fichier08a.txt
+    fichier08b.txt
+    fichier09a.txt
+    fichier09b.txt
+    fichier10a.txt
+    fichier10b.txt
 
 **b)** Dans le cas où on retrouve les **combinaisons de paramètres dans un
 fichier texte** :
 
 .. code-block:: bash
 
-    cat param.txt
+    [alice@narval1 gnu-parallel]$ cat param.txt
+    3 4
+    3 6
+    3 8
+    5 4
+    5 6
+    5 8
+    7 4
+    7 6
+    7 8
 
 La commande ``parallel`` aura ``-C ' '`` pour spécifier le séparateur de
 paramètres dans ``param.txt``, ainsi que l’argument ``::::`` pour spécifier
@@ -197,24 +274,49 @@ ensuite ce nom de fichier :
 
 .. code-block:: bash
 
-    # parallel -C ' ' echo '$(({1}*{2})) > prod_{1}x{2}' :::: param.txt
-    cat exec-param.sh
-    sbatch exec-param.sh
+    [alice@narval1 gnu-parallel]$ cat exec-param.sh
+    #!/bin/bash
+    #SBATCH --cpus-per-task=2
+    #SBATCH --mem=1000M
+    #SBATCH --time=00:05:00
+
+    parallel -C ' ' echo '$(({1}*{2})) > prod_{1}x{2}' :::: param.txt
+    grep -E '[0-9]+' prod_*
+
+.. code-block:: bash
+
+    [alice@narval1 gnu-parallel]$ sbatch exec-param.sh
 
 **c)** Si on préfère valider la **liste des commandes dans un fichier texte**
 avant leur exécution sur un nœud de calcul :
 
 .. code-block:: bash
 
-    cat cmd.txt
+    [alice@narval1 gnu-parallel]$ cat cmd.txt
+    echo $((3*4)) > prod_3x4
+    echo $((3*6)) > prod_3x6
+    echo $((5*4)) > prod_5x4
+    echo $((5*6)) > prod_5x6
+    echo $((5*8)) > prod_5x8
+    echo $((7*6)) > prod_7x6
+    echo $((7*8)) > prod_7x8
 
 Le script de tâche aura une commande ``parallel`` simplifiée :
 
 .. code-block:: bash
 
-    # parallel < cmd.txt
-    cat exec-cmd.sh
-    sbatch exec-cmd.sh
+    [alice@narval1 gnu-parallel]$ cat exec-cmd.sh
+    #!/bin/bash
+    #SBATCH --cpus-per-task=2
+    #SBATCH --mem=1000M
+    #SBATCH --time=00:05:00
+
+    parallel < cmd.txt
+    grep -E '[0-9]+' prod_*
+
+.. code-block:: bash
+
+    [alice@narval1 gnu-parallel]$ sbatch exec-cmd.sh
 
 Exercice - Aligner des séquences d’ADN
 ''''''''''''''''''''''''''''''''''''''
@@ -260,7 +362,22 @@ forcer une limite sur le nombre de processus lancés à la fois. Par exemple,
 
 .. code-block:: bash
 
-    parallel -j 2 'echo {} && sleep 3' ::: {1..10}
+    [alice@narval1 ~]$ parallel -j 2 'echo {} && sleep 3' ::: {1..10}
+    # (3 secondes d'attente)
+    1
+    2
+    # (3 secondes d'attente)
+    3
+    4
+    # (3 secondes d'attente)
+    5
+    6
+    # (3 secondes d'attente)
+    7
+    8
+    # (3 secondes d'attente)
+    9
+    10
 
 Dans un script de tâche OpenMP contenant :
 
