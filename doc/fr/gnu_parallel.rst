@@ -321,12 +321,29 @@ Le script de tâche aura une commande ``parallel`` simplifiée :
 Exercice - Aligner des séquences d’ADN
 ''''''''''''''''''''''''''''''''''''''
 
-**Objectifs**
+En ayant des séquences d’ADN de quatre espèces connues ``{A,B,C,D}`` et de 16
+espèces inconnues ``{K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}``, on souhaite identifier
+les espèces inconnues en utilisant des outils du domaine de la bio-informatique
+pour comparer leur ADN à celle des espèces connues. La correspondance s'évalue
+à l'aide d'alignements de brins d'ADN. Par exemple, un alignement trouvé
+ressemble à ceci :
+
+.. code-block::
+
+    Query  1    GTCTGTGTAATGCGCACCATCCGTGATATAATCGACGACGGCCTCCAAGAGACAAGGGCG  60
+                |||||||||||||||||||||||||||||||  |||||||||||||||||||||||| ||
+    Sbjct  637  GTCTGTGTAATGCGCACCATCCGTGATATAACTGACGACGGCCTCCAAGAGACAAGGCCG  696
+
+    Query  61   GCCATAAGGCGTGCACTATCTCAAAGCTGGTAATGTGAAGAAACCTATAAAAAGAGTACA  120
+                |||||||||||||||| |||||||||| ||| ||||||||||||||| ||||||||||||
+    Sbjct  697  GCCATAAGGCGTGCACAATCTCAAAGCAGGTCATGTGAAGAAACCTACAAAAAGAGTACA  756
+
+En testant la correspondance de toutes les combinaisons ``{A,B,C,D}`` x
+``{K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}``, on obtient 64 combinaisons à tester.
+
+**Objectif**
 
 - Utiliser deux listes de valeurs dans une commande ``parallel``.
-- En ayant des séquences d’ADN d’espèces connues et inconnues, calculer
-  l’alignement de toutes les combinaisons ``{A,B,C,D}`` x
-  ``{K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}``, ce qui donne 64 combinaisons.
 
 **Instructions**
 
