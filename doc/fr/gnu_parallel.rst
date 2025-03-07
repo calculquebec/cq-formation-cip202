@@ -205,14 +205,11 @@ Exercice - Préparer des séquences d’ADN
    #. Supprimez les lignes ``for`` et ``done`` (:kbd:`Ctrl+K` dans ``nano``).
 
 #. Sauvegardez le script et soumettez-le à l’ordonnanceur.
-#. Au final, validez la présence des fichiers suivants :
+#. Une fois la tâche terminée, validez la présence des fichiers suivants :
 
    - ``spec_A.fa`` à ``spec_D.fa``, inclusivement.
    - ``spec_A.n*`` à ``spec_D.n*``, inclusivement.
    - ``chr_K.fa`` à ``chr_Z.fa``, inclusivement.
-
-#. En cas de problème, tentez de le régler ou soumettez le script
-   ``solution/gen-seq.sh`` à l’ordonnanceur.
 
 .. note::
 
@@ -324,8 +321,8 @@ Exercice - Aligner des séquences d’ADN
 En ayant des séquences d’ADN de quatre espèces connues ``{A,B,C,D}`` et de 16
 espèces inconnues ``{K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}``, on souhaite identifier
 les espèces inconnues en utilisant des outils du domaine de la bio-informatique
-pour comparer leur ADN à celle des espèces connues. La correspondance s'évalue
-à l'aide d'alignements de brins d'ADN. Par exemple, un alignement trouvé
+pour comparer leur ADN à celle des espèces connues. La correspondance s’évalue
+à l’aide d’alignements de brins d’ADN. Par exemple, un alignement trouvé
 ressemble à ceci :
 
 .. code-block::
@@ -349,6 +346,16 @@ En testant la correspondance de toutes les combinaisons ``{A,B,C,D}`` x
 
 #. Allez dans le répertoire de l’exercice avec ``cd
    ~/cq-formation-cip202-main/lab/bio-info``.
+
+   #. Validez la présence des fichiers suivants :
+
+      - ``spec_A.fa`` à ``spec_D.fa``, inclusivement.
+      - ``spec_A.n*`` à ``spec_D.n*``, inclusivement.
+      - ``chr_K.fa`` à ``chr_Z.fa``, inclusivement.
+
+   #. **S'il en manque**, soumettez le script suivant à l’ordonnanceur :
+      ``sbatch solution/gen-seq.sh``.
+
 #. Éditez le fichier ``blastn-parallel.sh`` :
 
    #. Demandez quatre (4) cœurs CPU dans l’entête ``SBATCH``.
