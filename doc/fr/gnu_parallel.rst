@@ -18,10 +18,6 @@ processus au lieu de scripts de tâche.
 
 .. figure:: ../images/gnu-parallel_fr.svg
 
-- `Documentation officielle
-  <https://www.gnu.org/software/parallel/parallel.html>`_
-- `Tutoriel <https://www.gnu.org/software/parallel/parallel_tutorial.html>`_
-
 Pourquoi pas Slurm?
 -------------------
 
@@ -418,3 +414,13 @@ Nous aurions une commande comme celle-ci :
         --env OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK \
         ./app <options> {} \
         ::: val1 val2 ...
+
+Pour en savoir plus
+-------------------
+
+- Documentation technique de l’Alliance : `GNU Parallel
+  <https://docs.alliancecan.ca/wiki/GNU_Parallel/fr>`_
+- Documentation officielle : `GNU Parallel
+  <https://www.gnu.org/software/parallel/sphinx.html>`_
+- Tutoriel : `GNU Parallel Tutorial
+  <https://www.gnu.org/software/parallel/parallel_tutorial.html>`_
