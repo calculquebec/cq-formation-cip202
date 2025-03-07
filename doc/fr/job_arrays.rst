@@ -389,7 +389,7 @@ est flexible :
 
   - Cela permet, entre autres, d’éviter de traiter des combinaisons que l’on
     sait impossible. Par exemple, si vous simulez un modèle avec différentes
-    combinaisons de températures et de niveaux d’humidité mais que vous ne vous
+    combinaisons de température et de niveau d’humidité mais que vous ne vous
     intéressez qu’aux conditions au-dessus du point de rosée, vous pouvez
     éliminer à l’avance les combinaisons température/humidité que vous savez
     être en dessous de ce point, simplement en ne les ajoutant pas à votre
