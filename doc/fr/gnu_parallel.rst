@@ -419,8 +419,9 @@ Pour en savoir plus
 -------------------
 
 - Documentation technique de l’Alliance : `GNU Parallel
-  <https://docs.alliancecan.ca/wiki/GNU_Parallel/fr>`_
+  <https://docs.alliancecan.ca/wiki/GNU_Parallel/fr>`__
 - Documentation officielle : `GNU Parallel
-  <https://www.gnu.org/software/parallel/sphinx.html>`_
-- Tutoriel : `GNU Parallel Tutorial
-  <https://www.gnu.org/software/parallel/parallel_tutorial.html>`_
+  <https://www.gnu.org/software/parallel/sphinx.html>`__
+
+  - Tutoriel : `GNU Parallel Tutorial
+    <https://www.gnu.org/software/parallel/parallel_tutorial.html>`_
