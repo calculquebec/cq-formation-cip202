@@ -1,5 +1,5 @@
 Généralités
-============
+===========
 
 `English <../en/introduction.html>`_
 
