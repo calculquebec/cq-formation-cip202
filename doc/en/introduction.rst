@@ -1,4 +1,4 @@
-Introduction
+Generalities
 ============
 
 `Français <../fr/introduction.html>`_
