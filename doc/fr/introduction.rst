@@ -5,7 +5,7 @@ Généralités
 
 Dans `CIP201
 <https://calculquebec.github.io/cq-formation-cip201/fr/task-types/parallel.html>`__,
-nous avions vu la distinction entre des tâches sérielles et des tâches
+nous avons vu la distinction entre des tâches sérielles et des tâches
 parallèles. Parmi les tâches parallèles, il existe deux sous-catégories :
 
 - Le `parallélisme de traitement
