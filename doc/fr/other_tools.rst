@@ -65,6 +65,15 @@ qui ont fait des calculs. Avec le code de sortie (``status 0`` quand tout va
 bien), c’est possible d’identifier les commandes à reprendre lors d’une
 prochaine tâche GLOST.
 
+.. note::
+
+    Un code de sortie est un nombre entier retourné par un programme lorsqu’il
+    se termine. Tous les programmes génèrent un code de sortie, même s’ils
+    « plantent » ou génèrent des erreurs. Par convention, un code de sortie de
+    zéro indique que le programme s’est terminé avec succès ; toute autre valeur
+    indique une erreur. Le code de sortie de la dernière commande exécutée peut
+    être obtenu avec ``$?``.
+
 META-Farm
 ---------
 
