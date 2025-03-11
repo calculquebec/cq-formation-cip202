@@ -11,7 +11,7 @@ Présentation ...
 META-Farm
 ---------
 
-`META-Farm <https://docs.alliancecan.ca/wiki/META-Farm>`__ (ou, simplement,
+`META-Farm <https://docs.alliancecan.ca/wiki/META-Farm/fr>`__ (ou, simplement,
 META) est un outil avancé pour le parallélisme de données sur les grappes de
 calcul qui utilisent l’ordonnanceur de tâches Slurm. Il combine certaines des
 capacités des vecteurs de tâches et de GNU Parallel pour une flexibilité accrue.
@@ -193,6 +193,6 @@ Pour en savoir plus
 '''''''''''''''''''
 
 - Documentation technique de l’Alliance : `META-Farm
-  <https://docs.alliancecan.ca/wiki/META-Farm>`__
+  <https://docs.alliancecan.ca/wiki/META-Farm/fr>`__
 - Webinaire : `META: running a large number of jobs conveniently
   <https://www.youtube.com/watch?v=GcYbaPClwGE>`__
