@@ -117,7 +117,7 @@ courts dans une seule tâche, ce qui évite de surcharger l’ordonnanceur.
 
 META offre d’autres fonctionnalités comme la resoumission automatique des cas
 qui ont échoué et l’exécution d’une tâche de post-traitement lorsqu’un groupe de
-cas est completé.
+cas est complété.
 
 Démonstration
 '''''''''''''
