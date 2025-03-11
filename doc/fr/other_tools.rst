@@ -188,3 +188,11 @@ cela permet d’identifier d’éventuels cas ayant échoué et de les resoumett
     14 0
     15 0
     18 0
+
+Pour en savoir plus
+'''''''''''''''''''
+
+- Documentation technique de l’Alliance : `META-Farm
+  <https://docs.alliancecan.ca/wiki/META-Farm>`__
+- Webinaire : `META: running a large number of jobs conveniently
+  <https://www.youtube.com/watch?v=GcYbaPClwGE>`__
