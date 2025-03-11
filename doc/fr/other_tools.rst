@@ -188,12 +188,3 @@ cela permet d’identifier d’éventuels cas ayant échoué et de les resoumett
     14 0
     15 0
     18 0
-
-.. note::
-
-    Un code de sortie est un nombre entier retourné par un programme lorsqu’il
-    se termine. Tous les programmes génèrent un code de sortie, même lorsqu’ils
-    « plantent » ou génèrent des erreurs. Par convention, un code de sortie de
-    zéro indique que le programme s’est terminé avec succès ; toute autre valeur
-    indique une erreur. Le code de sortie de la dernière commande exécutée peut
-    être obtenu avec ``$?``.
