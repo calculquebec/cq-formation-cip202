@@ -213,7 +213,7 @@ Exercice
    #. Copiez-le sous un autre nom : ``cp dist-job-single.sh dist-job-array.sh``.
    #. Éditez le nouveau script avec ``nano dist-job-array.sh``.
    #. Ajoutez l’option ``--array`` pour créer un vecteur de 10 tâches.
-   #. Utilisez ``SLURM_ARRAY_TASK_ID`` pour contrôler le nom du fichier de
+   #. Utilisez ``$SLURM_ARRAY_TASK_ID`` pour contrôler le nom du fichier de
       sortie.
    #. Optionnellement, utilisez ``printf`` pour produire des fichiers de sortie
       dont les noms ont tous le même nombre de caractères.
@@ -370,8 +370,8 @@ Le script du vecteur de tâches lit une ligne de ce fichier :
 .. note::
 
     La commande ``sed`` (*stream editor*) est un outil de manipulation de texte.
-    Il est utilisé ici pour lire la ligne ``${i}`` du fichier de paramètres. La
-    syntaxe ``<<<`` est une chaîne en ligne (*here string*) : la sortie de
+    Elle est utilisée ici pour lire la ligne ``${i}`` du fichier de paramètres.
+    La syntaxe ``<<<`` est une chaîne en ligne (*here string*) : la sortie de
     ``sed`` est redirigée vers la commande ``read``, qui assigne les valeurs aux
     variables ``prot``, ``temp`` et ``agent``.
     
@@ -388,7 +388,7 @@ est flexible :
 - N’importe quelles combinaisons de paramètres peuvent être choisies.
 
   - Cela permet, entre autres, d’éviter de traiter des combinaisons que l’on
-    sait impossible. Par exemple, si vous simulez un modèle avec différentes
+    sait impossibles. Par exemple, si vous simulez un modèle avec différentes
     combinaisons de température et de niveau d’humidité mais que vous ne vous
     intéressez qu’aux conditions au-dessus du point de rosée, vous pouvez
     éliminer à l’avance les combinaisons température/humidité que vous savez

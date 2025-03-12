@@ -211,12 +211,12 @@ Exercice - Préparer des séquences d’ADN
 
     L’encodage numérique de brins d’ADN se fait au moyen des quatre codes
     ``A``, ``C``, ``G`` et ``T`` qui correspondent aux quatre bases des
-    molécules d’ADN. Bien qu’une séquence complète soit faite de milliards de
-    bases, les séquenceurs sont fiables que sur de courtes lectures. Ainsi,
-    une collection de fichiers Fasta (``*.fa``) contient de nombreux morceaux
-    d’ADN qui peuvent se chevaucher. Or, étant donné les nombreuses
+    molécules d’ADN. Bien qu’une séquence complète puisse contenir des millions
+    de bases, les séquenceurs ne sont fiables que sur de courtes lectures.
+    Ainsi, une collection de fichiers Fasta (``*.fa``) contient de nombreux
+    morceaux d’ADN qui peuvent se chevaucher. Or, étant donné les nombreuses
     combinaisons possibles, en plus d’un certain taux d’erreurs dans les
-    données, reconstruire une longue séquence d’ADN est tout un défi!
+    données, reconstruire une longue séquence d’ADN est tout un défi !
 
     Parfois, le problème est plus *simple*, c’est-à-dire qu’il suffit
     d’identifier à quelle espèce appartient le brin d’ADN. Dans ce cas, il
@@ -354,7 +354,7 @@ En testant la correspondance de toutes les combinaisons ``{A,B,C,D}`` x
 
 #. Éditez le fichier ``blastn-parallel.sh`` :
 
-   #. Demandez quatre (4) cœurs CPU dans l’entête ``SBATCH``.
+   #. Demandez quatre (4) cœurs CPU dans l’entête ``#SBATCH``.
    #. Séparez le gabarit de commande et les deux listes de valeurs par des
       séparateurs ``:::``.
    #. La première liste de lettres correspond aux espèces connues. Chaque

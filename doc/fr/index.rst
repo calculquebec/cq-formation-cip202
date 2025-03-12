@@ -14,9 +14,11 @@ pour analyser différents ensembles de données ou faire un *balayage de
 paramètres*.
 
 Les concepts généraux présentés dans l’:doc:`introduction <introduction>` sont
-indépendants des outils présentés plus loin. Ces concepts vous aideront
-justement à choisir l’outil approprié pour les cas de parallélisme de données
-les plus communs.
+indépendants des outils présentés plus loin.
+
+..
+    Ces concepts vous aideront justement à choisir l’outil approprié pour les
+    cas de parallélisme de données les plus communs.
 
 Les sections suivantes sont consacrées à des outils spécifiques. Nous débutons
 avec les :doc:`vecteurs de tâches <job_arrays>`, une fonctionnalité intégrée à

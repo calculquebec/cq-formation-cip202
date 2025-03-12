@@ -97,7 +97,7 @@ Si l’on applique ce vocabulaire aux vecteurs de tâches, on pourrait dire que
 chaque cas d’un groupe est traité dans une tâche ; il y a autant de tâches que
 de cas. Avec GNU Parallel, inversement, tous les cas d’un groupe sont traités
 dans une seule tâche. META permet de faire l’un ou l’autre ou même d’utiliser
-une stratégie intermédaire, le mode META.
+une stratégie intermédiaire, le mode META.
 
 Le fonctionnement du mode META est illustré dans la figure ci-dessous. Lorsque
 le traitement d’un groupe de cas est débuté avec ``submit.run``, on spécifie le
@@ -190,6 +190,7 @@ ressources nécessaires dans ce fichier. Cet exemple utilise un programme série
 .. code-block:: console
 
     #!/bin/bash
+
     #SBATCH --time=01:00:00
     #SBATCH --account=def-sponsor
 
@@ -201,13 +202,13 @@ ressources nécessaires dans ce fichier. Cet exemple utilise un programme série
     L’option ``--time`` dans le fichier ``job_script.sh`` doit être réglée en
     fonction du temps nécessaire pour tous les cas qui seront traités par une
     tâche et non en fonction du temps nécessaire pour un seul cas. Ce temps
-    :math:`t` doit être calculé en fonction du nombre total de cas, :math:`M`,
-    du temps moyen nécessaire pour un cas, :math:`t_i`, et du nombre de tâches
-    :math:`N` choisi :
+    :math:`t` doit être calculé en fonction du nombre total de cas (:math:`M`),
+    du temps moyen nécessaire pour un cas (:math:`\bar{t_i}`) et du nombre de
+    tâches (:math:`N`) choisi :
 
     .. math::
 
-        t = \frac{M t_i}{N}
+        t = \frac{M \, \bar{t_i}}{N}
 
 4. Soumettre les tâches
 .......................
