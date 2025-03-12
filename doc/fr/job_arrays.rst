@@ -244,13 +244,12 @@ programme MPI 10 fois avec 8 cœurs CPU chaque fois, le script suivant demande 8
 cœurs et non 80 :
 
 .. code-block:: bash
-    :emphasize-lines: 5,8
+    :emphasize-lines: 4,7
 
     #!/bin/bash
 
     #SBATCH --job-name=param-sweep
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=8
+    #SBATCH --ntasks=8
     #SBATCH --mem-per-cpu=2G
     #SBATCH --time=6:00:00
     #SBATCH --array=1-10
