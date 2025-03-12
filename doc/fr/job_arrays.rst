@@ -132,11 +132,12 @@ Finalement, il est possible de limiter le nombre de tâches pouvant être
 actives simultanément :
 
 - ``--array=1-1000%10`` : Au plus 10 tâches peuvent être actives simultanément.
-- ``--array=1-25%1`` : Ne démarre qu’une seule tâche à la fois.
 
-Le premier exemple est utile pour limiter le débit de vos tâches afin d’éviter
-que les autres membres de votre groupe de recherche ne voient la priorité de
-leurs tâches sévèrement diminuée si vous soumettez un grand nombre de tâches.
+Cela est utile pour limiter le débit de vos tâches afin d’éviter que les autres
+membres de votre groupe de recherche ne voient la priorité de leurs tâches
+sévèrement diminuée si vous soumettez un grand nombre de tâches. Si vos tâches
+utilisent intensivement le stockage réseau, limiter le nombre de tâches actives
+évite aussi de causer des problèmes d’entrée-sortie.
 
 La variable ``SLURM_ARRAY_TASK_ID`` donne l’index associé à une tâche. Elle est
 utilisée dans le script afin de distinguer les tâches. On l’utilise pour :
