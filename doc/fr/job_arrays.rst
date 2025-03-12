@@ -75,19 +75,19 @@ On peut annuler une des tâches du vecteur avec son index :
 
 .. code-block:: console
 
-    [alice@narval1 ~]$ scancel -j 40912550_5
+    [alice@narval1 ~]$ scancel 40912550_5
 
 Ou un sous-ensemble des tâches :
 
 .. code-block:: console
 
-    [alice@narval1 ~]$ scancel -j 40912550_[6-10]
+    [alice@narval1 ~]$ scancel 40912550_[6-10]
 
 Ou encore toutes les tâches du vecteur :
 
 .. code-block:: console
 
-    [alice@narval1 ~]$ scancel -j 40912550
+    [alice@narval1 ~]$ scancel 40912550
 
 Exercice
 ''''''''
