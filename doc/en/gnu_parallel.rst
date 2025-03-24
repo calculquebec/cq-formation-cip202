@@ -12,7 +12,7 @@ combinations is a challenge in itself. And this is where `GNU Parallel
 GNU Parallel is used via the ``parallel`` command, which allows you to fully
 utilize a compute node's local resources by managing the execution of a **long
 list of small tasks**. It is a bit like the Slurm scheduler, but on a smaller
-scale and it is managing processes instead of job scripts.
+scale and managing processes instead of job scripts.
 
 .. figure:: ../images/gnu-parallel_en.svg
 
