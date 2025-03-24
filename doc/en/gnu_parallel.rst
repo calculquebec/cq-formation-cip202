@@ -141,11 +141,10 @@ The same value can be repeated in the command template:
     11. file11.txt
     12. file12.txt
 
-Finally, if your command template needs to contain characters normally
-interpreted by Bash, for example ``$``, ``|``, ``>``, ``&`` and ``;``, you can
-enclose the entire command template in ``''`` so that the interpretation of
-these characters is done only when GNU Parallel executes the commands in
-parallel:
+Finally, if your command template contains characters normally interpreted by
+Bash, for example ``$``, ``|``, ``>``, ``&`` and ``;``, you can enclose the
+entire command template in ``''`` so that the interpretation of these
+characters is done only when GNU Parallel executes the commands in parallel:
 
 .. code-block:: bash
 
