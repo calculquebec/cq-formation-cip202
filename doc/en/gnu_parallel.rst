@@ -178,23 +178,23 @@ Exercise - Prepare DNA sequences
       #. Add ``parallel`` at the beginning and remove the indentation.
       #. Replace both ``$spec`` iterators with ``{}``.
       #. Protect the ``>`` character, if applicable.
-      #. Add ``:::``, and the letters A to D, inclusive.
+      #. Add ``:::``, and the letters A to D inclusive.
 
    #. Repeat the same steps for the ``makeblastdb ...`` command.
    #. Repeat the same steps for the ``python gen_test.py ...`` command,
       but with the following differences:
 
       - Replace both ``$test`` iterators with ``{}``.
-      - Provide the 16 letters from K to Z, inclusive.
+      - Provide the 16 letters from K to Z inclusive.
 
    #. Remove the lines ``for`` and ``done`` (:kbd:`Ctrl+K` in ``nano``).
 
 #. Save the script and submit it to the scheduler.
 #. Once the job is over, validate the presence of the following files:
 
-   - ``spec_A.fa`` to ``spec_D.fa``, inclusive.
-   - ``spec_A.n*`` to ``spec_D.n*``, inclusive.
-   - ``chr_K.fa`` to ``chr_Z.fa``, inclusive.
+   - ``spec_A.fa`` to ``spec_D.fa`` inclusive.
+   - ``spec_A.n*`` to ``spec_D.n*`` inclusive.
+   - ``chr_K.fa`` to ``chr_Z.fa`` inclusive.
 
 .. note::
 
