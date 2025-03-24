@@ -39,7 +39,7 @@ GNU Parallel advantages:
 
 - GNU Parallel can `resume the sequence of compute tasks
   <https://docs.alliancecan.ca/wiki/GNU_Parallel#Keeping_Track_of_Completed_and_Failed_Commands,_and_Restart_Capabilities>`__
-  in case of a job ending sooner than expected or what is needed.
+  in case a job is interrupted.
 
 GNU Parallel command syntax
 ---------------------------
