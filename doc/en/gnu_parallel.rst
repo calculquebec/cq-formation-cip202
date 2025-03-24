@@ -29,7 +29,7 @@ OK, but why not just submit **hundreds of jobs to Slurm**?
 
 GNU Parallel advantages:
 
-- **No need of using a loop**, which makes it easier to manage hundreds of
+- **No need to use a loop**, which makes it easier to manage hundreds of
   compute tasks.
 - The number of **available CPU cores automatically limits** the number of
   simultaneous running tasks.
