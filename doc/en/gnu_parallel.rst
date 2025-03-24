@@ -403,8 +403,8 @@ We would have a command like this:
         ./app <options> {} \
         ::: val1 val2 ...
 
-To find out more
-----------------
+Find out more
+-------------
 
 - Alliance technical documentation: `GNU Parallel
   <https://docs.alliancecan.ca/wiki/GNU_Parallel>`__
