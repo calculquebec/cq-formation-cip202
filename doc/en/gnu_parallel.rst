@@ -333,9 +333,9 @@ By testing the correspondence of all combinations ``{A,B,C,D}`` x
 
    #. Validate the presence of the following files:
 
-      - ``spec_A.fa`` to ``spec_D.fa``, inclusive.
-      - ``spec_A.n*`` to ``spec_D.n*``, inclusive.
-      - ``chr_K.fa`` to ``chr_Z.fa``, inclusive.
+      - ``spec_A.fa`` to ``spec_D.fa`` inclusive.
+      - ``spec_A.n*`` to ``spec_D.n*`` inclusive.
+      - ``chr_K.fa`` to ``chr_Z.fa`` inclusive.
 
    #. **If any are missing**, submit the following script to the scheduler:
       ``sbatch solution/gen-seq.sh``.
