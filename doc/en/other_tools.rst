@@ -134,8 +134,8 @@ Each farm corresponds to a directory, created using the META command
     Success!
     [alice@narval3 ~]$ cd hello/
 
-The same command adds to the directory the files that are used to configure the
-farm and its cases.
+That command also added to the directory the files that are used to configure
+the farm and its cases.
 
 .. code-block:: console
 
