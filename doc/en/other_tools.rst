@@ -6,7 +6,7 @@ Other Tools
 GLOST
 -----
 
-`GLOST <https://docs.alliancecan.ca/wiki/GLOST/fr>`__ (for *Greedy Launcher
+`GLOST <https://docs.alliancecan.ca/wiki/GLOST/en>`__ (for *Greedy Launcher
 of Small Tasks*) is a tool that behaves somewhat like :doc:`gnu_parallel` when
 given a command file. Here is what distinguishes the two tools:
 
@@ -20,7 +20,7 @@ Slurm job    Typically on a single node       Distributed processes (MPI)
 
 From the above table, we understand that GLOST uses an `MPI (Message Passing
 Interface) job
-<https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2che_MPI>`__ to run
+<https://docs.alliancecan.ca/wiki/Running_jobs#MPI_job>`__ to run
 **exclusively serial commands** listed in a text file. The ``glost_launch``
 program is an MPI program that uses a manager-worker architecture:
 
