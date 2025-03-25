@@ -94,8 +94,8 @@ is treated in a different job; there are as many jobs as cases. With GNU
 Parallel, conversely, all cases in a farm are treated using a single job. META
 can do both and even use an intermediate strategy, called META mode.
 
-META mode is illustrated in the figure below. When the processing of a farm
-begins, with ``submit.run``, the number of jobs :math:`N` to submit to the
+META mode is illustrated in the figure below. When beginning the processing of a
+farm with ``submit.run``, the number of jobs :math:`N` to submit to the
 scheduler is given. When the first of these jobs starts, it begins solving the
 first case. As soon as this case is solved, the job proceeds to the next one.
 As the other jobs start, they also solve one case at a time. Once all cases
