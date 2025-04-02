@@ -117,7 +117,7 @@ Les index des tâches à soumettre peuvent être contrôlés avec précision. Vo
 quelques exemples :
 
 - ``--array=1-10`` : De 1 à 10
-- ``--array=1-9:2`` : 1, 3, 5, 7, 9 (pas de 2)
+- ``--array=1-9:2`` : 1, 3, 5, 7, 9 (un pas de 2)
 - ``--array=1,2,5`` : 1, 2, 5
 
 La syntaxe du dernier exemple est particulièrement utile pour re-soumettre une
