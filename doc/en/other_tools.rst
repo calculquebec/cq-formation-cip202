@@ -120,7 +120,7 @@ Demonstration
 
 .. code-block:: console
 
-    [alice@narval3 ~]$ module load meta-farm/1.0.2
+    [alice@narval3 ~]$ module load meta-farm/1.0.3
 
 2. Create a farm
 ................
@@ -145,40 +145,39 @@ the farm and its cases.
 3. Configure the cases and the jobs
 ...................................
 
-The ``table.dat`` file lists the cases, one per line, with a case number in the
-first column.
+The ``table.dat`` file lists the cases, one per line. The default ``table.dat``
+contains 1300 cases. Each case calls the ``sleep`` command with a random
+argument.
 
 .. code-block:: console
 
-    [alice@narval3 hello]$ cat table.dat 
-    1 sleep 30
-    2 sleep 35
-    3 sleep 40
-    4 sleep 25
-    5 sleep 31
-    6 sleep 33
-    7 sleep 28
-    8 sleep 43
-    9 sleep 29
-    10 sleep 28
-    11 sleep 39
-    12 sleep 27
-    13 sleep 31
-    14 sleep 24
-    15 sleep 44
-    16 sleep 33
-    17 sleep 28
-    18 sleep 29
+    [alice@narval3 hello]$ wc -l table.dat 
+    1300 table.dat
+    [alice@narval3 hello]$ head table.dat 
+    sleep 26
+    sleep 26
+    sleep 28
+    sleep 30
+    sleep 29
+    sleep 25
+    sleep 25
+    sleep 28
+    sleep 27
+    sleep 29
 
-There are 18 cases in this example, which uses the default ``table.dat`` file.
-Each case calls the ``sleep`` command with a different argument.
+To simplify this example, we will retain only the first 18 cases.
+
+.. code-block:: console
+
+    [alice@narval3 hello]$ head -n 18 table.dat > subset.dat
+    [alice@narval3 hello]$ mv subset.dat table.dat
 
 File ``job_script.sh`` contains the ``#SBATCH`` instructions that will be
 applied to each of the :math:`N` jobs submitted to the scheduler. This file must
 be edited to at least set the required time and account to use. If your cases
 use a parallel or GPU program, request the necessary resources in this file.
 This example uses a serial program (``sleep``) that requires no particular
-resources:
+resources.
 
 .. code-block:: console
 
@@ -187,8 +186,9 @@ resources:
     #SBATCH --time=01:00:00
     #SBATCH --account=def-sponsor
 
-    # Don’t change this line:
-    task.run
+    # Don’t change the lines below
+    #=================================================================
+    [...]
 
 .. note::
 
@@ -206,16 +206,37 @@ resources:
 ..................
 
 The number of jobs :math:`N` is given to the META command ``submit.run``, which
-submits the jobs to the scheduler:
+submits the jobs to the scheduler.
 
 .. code-block:: console
 
     [alice@narval3 hello]$ submit.run 2
+    Submitting 20 cases from table.dat as 2 jobs using META mode
+
+    Submitting the farm as an Array Job
+
+    Success!
     [alice@narval3 hello]$ sq
               JOBID     USER      ACCOUNT           NAME  ST  TIME_LEFT NODES CPUS TRES_PER_N MIN_MEM NODELIST (REASON) 
          41169148_1    alice  def-sponsor          hello   R      59:10     1    1        N/A      4G nc31004 (None) 
          41169148_2    alice  def-sponsor          hello   R      59:10     1    1        N/A      4G nc31004 (None)
 
+The ``table.dat`` file is modified when the tasks are submitted, to set an index
+for each case.
+
+.. code-block:: console
+
+    [alice@narval3 hello]$ head table.dat
+    1 sleep 26
+    2 sleep 26
+    3 sleep 28
+    4 sleep 30
+    5 sleep 29
+    6 sleep 25
+    7 sleep 25
+    8 sleep 28
+    9 sleep 27
+    10 sleep 29
 
 5. Check results
 ................

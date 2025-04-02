@@ -127,7 +127,7 @@ Démonstration
 
 .. code-block:: console
 
-    [alice@narval3 ~]$ module load meta-farm/1.0.2
+    [alice@narval3 ~]$ module load meta-farm/1.0.3
 
 2. Créer un groupe de cas
 .........................
@@ -152,40 +152,39 @@ configurer le groupe et les cas.
 3. Configurer les cas et les tâches
 ...................................
 
-Le fichier ``table.dat`` liste les cas, un par ligne, avec un numéro de cas dans
-la première colonne.
+Le fichier ``table.dat`` liste les cas, un par ligne. Le fichier généré par
+défaut contient 1300 cas. Chaque cas appelle la commande ``sleep`` avec un
+argument aléatoire.
 
 .. code-block:: console
 
-    [alice@narval3 hello]$ cat table.dat 
-    1 sleep 30
-    2 sleep 35
-    3 sleep 40
-    4 sleep 25
-    5 sleep 31
-    6 sleep 33
-    7 sleep 28
-    8 sleep 43
-    9 sleep 29
-    10 sleep 28
-    11 sleep 39
-    12 sleep 27
-    13 sleep 31
-    14 sleep 24
-    15 sleep 44
-    16 sleep 33
-    17 sleep 28
-    18 sleep 29
+    [alice@narval3 hello]$ wc -l table.dat 
+    1300 table.dat
+    [alice@narval3 hello]$ head table.dat 
+    sleep 26
+    sleep 26
+    sleep 28
+    sleep 30
+    sleep 29
+    sleep 25
+    sleep 25
+    sleep 28
+    sleep 27
+    sleep 29
 
-Il y a 18 cas dans cet exemple qui utilise le fichier ``table.dat`` créé par
-défaut. Chaque cas appelle la commande ``sleep`` avec un argument différent.
+Pour simplifier cet exemple, nous ne conserverons que les 18 premiers cas.
+
+.. code-block:: console
+
+    [alice@narval3 hello]$ head -n 18 table.dat > subset.dat
+    [alice@narval3 hello]$ mv subset.dat table.dat
 
 Le fichier ``job_script.sh`` contient les instructions ``#SBATCH`` qui seront
 appliquées à chacune des :math:`N` tâches soumises à l’ordonnanceur. Ce fichier
 doit être édité pour indiquer au moins le temps nécessaire et le compte à
 utiliser. Si vos cas utilisent un programme parallèle ou un GPU, demandez les
 ressources nécessaires dans ce fichier. Cet exemple utilise un programme sériel
-(``sleep``) qui ne demande aucune ressource particulière :
+(``sleep``) qui ne demande aucune ressource particulière.
 
 .. code-block:: console
 
@@ -194,8 +193,9 @@ ressources nécessaires dans ce fichier. Cet exemple utilise un programme série
     #SBATCH --time=01:00:00
     #SBATCH --account=def-sponsor
 
-    # Don’t change this line:
-    task.run
+    # Don’t change the lines below
+    #=================================================================
+    [...]
 
 .. note::
 
@@ -214,16 +214,37 @@ ressources nécessaires dans ce fichier. Cet exemple utilise un programme série
 .......................
 
 Le nombre :math:`N` de tâches est donné à la commande META ``submit.run``, qui
-soumet ces tâches à l’ordonnanceur :
+soumet ces tâches à l’ordonnanceur.
 
 .. code-block:: console
 
     [alice@narval3 hello]$ submit.run 2
+    Submitting 20 cases from table.dat as 2 jobs using META mode
+
+    Submitting the farm as an Array Job
+
+    Success!
     [alice@narval3 hello]$ sq
               JOBID     USER      ACCOUNT           NAME  ST  TIME_LEFT NODES CPUS TRES_PER_N MIN_MEM NODELIST (REASON) 
          41169148_1    alice  def-sponsor          hello   R      59:10     1    1        N/A      4G nc31004 (None) 
          41169148_2    alice  def-sponsor          hello   R      59:10     1    1        N/A      4G nc31004 (None)
 
+Le fichier ``table.dat`` est modifié lorsque les tâches sont soumises, afin
+d’assigner un index à chaque cas :
+
+.. code-block:: console
+
+    [alice@narval3 hello]$ head table.dat
+    1 sleep 26
+    2 sleep 26
+    3 sleep 28
+    4 sleep 30
+    5 sleep 29
+    6 sleep 25
+    7 sleep 25
+    8 sleep 28
+    9 sleep 27
+    10 sleep 29
 
 5. Consulter les résultats
 ..........................
