@@ -110,8 +110,8 @@ processus.
 
         It is really appreciated. The citation notice is now silenced.
 
-On peut réécrire la première commande en utilisant l’expansion des accolades
-Bash ``{a..b}`` :
+On peut réécrire la première commande en utilisant l’*expansion des accolades*
+``{a..b}`` :
 
 .. code-block:: bash
 
