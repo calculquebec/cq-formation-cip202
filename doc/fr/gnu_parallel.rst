@@ -110,9 +110,8 @@ processus.
 
         It is really appreciated. The citation notice is now silenced.
 
-
-On peut réécrire la première commande en utilisant l’expansion des accolades
-Bash ``{a..b}`` :
+On peut réécrire la première commande en utilisant l’*expansion des accolades*
+``{a..b}`` :
 
 .. code-block:: bash
 
@@ -123,7 +122,6 @@ Bash ``{a..b}`` :
     fichier10.txt
     fichier11.txt
     fichier12.txt
-
 
 Si nécessaire, on peut ajouter des zéros non significatifs aux nombres plus
 courts :

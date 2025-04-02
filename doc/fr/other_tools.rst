@@ -91,7 +91,7 @@ META utilise un vocabulaire spécifique :
 - *Cas* (*case*) : un calcul individuel. Il peut s’agir d’un calcul sériel ou
   parallèle, sur CPU ou GPU.
 - *Groupe de cas* (*farm*) : un ensemble de calculs (*cas*) à compléter.
-- *Tâche* (*task*) : une tâche de calcul dans l’ordonnanceur Slurm.
+- *Tâche* (*job*) : une tâche de calcul dans l’ordonnanceur Slurm.
 
 Si l’on applique ce vocabulaire aux vecteurs de tâches, on pourrait dire que
 chaque cas d’un groupe est traité dans une tâche ; il y a autant de tâches que
@@ -100,14 +100,14 @@ dans une seule tâche. META permet de faire l’un ou l’autre ou même d’uti
 une stratégie intermédiaire, le mode META.
 
 Le fonctionnement du mode META est illustré dans la figure ci-dessous. Lorsque
-le traitement d’un groupe de cas est débuté avec ``submit.run``, on spécifie le
+l’on débute le traitement d’un groupe de cas avec ``submit.run``, on spécifie le
 nombre :math:`N` de tâches à soumettre à l’ordonnanceur Slurm. Lorsque la
 première de ces tâches démarre, elle débute le premier cas. Dès que son
 traitement est terminé, la tâche passe au cas suivant. À mesure que les autres
 tâches démarrent, elles aussi traitent un cas à la fois. Lorsque tous les cas
 sont résolus, toutes les tâches s’arrêtent aussitôt.
 
-.. figure:: ../images/meta-farm.svg
+.. figure:: ../images/meta-farm_fr.svg
 
 Cette façon de faire combine des avantages des vecteurs de tâches et de GNU
 Parallel. Comme avec les vecteurs, il est possible d’avoir plusieurs tâches

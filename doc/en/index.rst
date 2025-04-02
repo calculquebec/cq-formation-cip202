@@ -4,13 +4,13 @@ Data parallelism on the clusters
 `Français <../fr/index.html>`_
 
 This intermediate-level workshop (CIP202) is the continuation of `Running jobs:
-resources and monitoring (CIP201)
-<https://calculquebec.github.io/cq-formation-cip201/en/index.html>`_. Here, we
-explore a branch of high-performance computing, *data parallelism*, using tools
-that allow for the easy management of large numbers of similar jobs. You will
-find these tools handy if your research project involves repeating a calculation
-tens or hundreds of times, for example to analyse different datasets or to
-perform a *parameter sweep*.
+resources and monitoring
+<https://calculquebec.github.io/cq-formation-cip201/en/index.html>`_ (CIP201).
+Here, we explore a branch of high-performance computing, *data parallelism*,
+using tools that allow for the easy management of large numbers of similar jobs.
+You will find these tools handy if your research project involves repeating a
+calculation tens or hundreds of times, for example to analyse different datasets
+or to perform a *parameter sweep*.
 
 The general concepts presented in the :doc:`introduction <introduction>` are
 independent from any particular tool.
@@ -35,7 +35,7 @@ such as GLOST and META-Farm.
     necessary files <https://github.com/calculquebec/cq-formation-cip202>`_ and
     do the exercises on any Calcul Québec or Digital Research Alliance of Canada
     cluster. Your jobs’ wait time, however, will be longer than on the cloud
-    computing platform.
+    platform.
 
 .. toctree::
     :caption: Data parallelism

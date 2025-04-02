@@ -105,7 +105,7 @@ vary and the operating system may sometimes slightly favor certain processes.
 
         It is really appreciated. The citation notice is now silenced.
 
-The first command can be rewritten using the Bash brace expansion ``{a..b}``:
+The first command can be rewritten using the ``{a..b}`` *brace expansion*:
 
 .. code-block:: bash
 
