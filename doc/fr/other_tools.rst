@@ -91,7 +91,7 @@ META utilise un vocabulaire spécifique :
 - *Cas* (*case*) : un calcul individuel. Il peut s’agir d’un calcul sériel ou
   parallèle, sur CPU ou GPU.
 - *Groupe de cas* (*farm*) : un ensemble de calculs (*cas*) à compléter.
-- *Tâche* (*task*) : une tâche de calcul dans l’ordonnanceur Slurm.
+- *Tâche* (*job*) : une tâche de calcul dans l’ordonnanceur Slurm.
 
 Si l’on applique ce vocabulaire aux vecteurs de tâches, on pourrait dire que
 chaque cas d’un groupe est traité dans une tâche ; il y a autant de tâches que
