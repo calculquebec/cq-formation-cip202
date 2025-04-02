@@ -35,7 +35,7 @@ such as GLOST and META-Farm.
     necessary files <https://github.com/calculquebec/cq-formation-cip202>`_ and
     do the exercises on any Calcul Québec or Digital Research Alliance of Canada
     cluster. Your jobs’ wait time, however, will be longer than on the cloud
-    computing platform.
+    platform.
 
 .. toctree::
     :caption: Data parallelism
