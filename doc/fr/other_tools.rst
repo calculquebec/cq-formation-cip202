@@ -100,7 +100,7 @@ dans une seule tâche. META permet de faire l’un ou l’autre ou même d’uti
 une stratégie intermédiaire, le mode META.
 
 Le fonctionnement du mode META est illustré dans la figure ci-dessous. Lorsque
-le traitement d’un groupe de cas est débuté avec ``submit.run``, on spécifie le
+l’on débute le traitement d’un groupe de cas avec ``submit.run``, on spécifie le
 nombre :math:`N` de tâches à soumettre à l’ordonnanceur Slurm. Lorsque la
 première de ces tâches démarre, elle débute le premier cas. Dès que son
 traitement est terminé, la tâche passe au cas suivant. À mesure que les autres
