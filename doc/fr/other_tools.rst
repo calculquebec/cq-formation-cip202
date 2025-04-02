@@ -107,7 +107,7 @@ traitement est terminé, la tâche passe au cas suivant. À mesure que les autre
 tâches démarrent, elles aussi traitent un cas à la fois. Lorsque tous les cas
 sont résolus, toutes les tâches s’arrêtent aussitôt.
 
-.. figure:: ../images/meta-farm.svg
+.. figure:: ../images/meta-farm_fr.svg
 
 Cette façon de faire combine des avantages des vecteurs de tâches et de GNU
 Parallel. Comme avec les vecteurs, il est possible d’avoir plusieurs tâches
