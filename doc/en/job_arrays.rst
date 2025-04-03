@@ -118,7 +118,7 @@ Using job arrays
 
 The submitted jobs’ indices can be chosen freely. A few examples:
 
-- ``--array=0-10``: From 1 to 10
+- ``--array=0-10``: From 0 to 10 (11 jobs total)
 - ``--array=1-9:2``: 1, 3, 5, 7, 9 (step of 2)
 - ``--array=1,2,5``: 1, 2, 5
 
