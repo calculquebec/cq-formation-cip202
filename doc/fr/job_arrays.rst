@@ -89,6 +89,12 @@ Ou encore toutes les tâches du vecteur :
 
     [alice@narval1 ~]$ scancel 40912550
 
+.. note::
+
+    Malgré son nom, la variable ``SLURM_ARRAY_TASK_ID`` n’a rien à voir avec les
+    options de parallélisme telles que ``--ntasks`` ou ``--ntasks-per-node``.
+    Elle réfère uniquement à l’index d’une tâche de calcul dans un vecteur.
+
 Exercice
 ''''''''
 
@@ -116,7 +122,7 @@ Utiliser les vecteurs
 Les index des tâches à soumettre peuvent être contrôlés avec précision. Voici
 quelques exemples :
 
-- ``--array=1-10`` : De 1 à 10
+- ``--array=0-10`` : De 0 à 10 (11 tâches au total)
 - ``--array=1-9:2`` : 1, 3, 5, 7, 9 (un pas de 2)
 - ``--array=1,2,5`` : 1, 2, 5
 

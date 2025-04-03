@@ -387,21 +387,23 @@ processed with a maximum of two processes simultaneously:
     9
     10
 
-In an OpenMP job script containing:
+In a job script for an OpenMP program using 4 threads of execution:
 
 .. code-block:: bash
 
-    #SBATCH --nodes=1 --ntasks-per-node=16 --cpus-per-task=4
+    #!/bin/bash
 
-We would have a command like this:
+    #SBATCH --job-name=my-para-mt-job
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=64
+    #SBATCH --time=1:00:00
+    #SBATCH --account=def-sponsor
 
-.. code-block:: bash
+    nthreads=4
+    export OMP_NUM_THREADS=$nthreads
+    njobs=$((SLURM_CPUS_PER_TASK / nthreads))
 
-    parallel \
-        -j $SLURM_NTASKS_PER_NODE \
-        --env OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK \
-        ./app <options> {} \
-        ::: val1 val2 ...
+    parallel --jobs $njobs ./app <options> {} ::: val1 val2 ...
 
 Find out more
 -------------
