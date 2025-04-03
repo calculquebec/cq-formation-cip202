@@ -89,6 +89,12 @@ Ou encore toutes les tâches du vecteur :
 
     [alice@narval1 ~]$ scancel 40912550
 
+.. note::
+
+    Malgré son nom, la variable ``SLURM_ARRAY_TASK_ID`` n’a rien à voir avec les
+    options de parallélisme telles que ``--ntasks`` ou ``--ntasks-per-node``.
+    Elle réfère uniquement à l’index d’une tâche de calcul dans un vecteur.
+
 Exercice
 ''''''''
 

@@ -87,6 +87,12 @@ To cancel all jobs in the array:
 
     [alice@narval1 ~]$ scancel 40912550
 
+.. note::
+
+    Despite its name, the ``SLURM_ARRAY_TASK_ID`` variable has nothing to do
+    with parallelism options such as ``--ntasks`` or ``--ntasks-per-node``. It
+    only refers to a job’s index in an array.
+
 Exercise
 ''''''''
 
