@@ -397,21 +397,23 @@ forcer une limite sur le nombre de processus lancés à la fois. Par exemple,
     9
     10
 
-Dans un script de tâche OpenMP contenant :
+Dans un script de tâche pour un programme OpenMP utilisant 4 fils d’exécution :
 
 .. code-block:: bash
 
-    #SBATCH --nodes=1 --ntasks-per-node=16 --cpus-per-task=4
+    #!/bin/bash
 
-Nous aurions une commande comme celle-ci :
+    #SBATCH --job-name=my-para-mt-job
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=64
+    #SBATCH --time=1:00:00
+    #SBATCH --account=def-sponsor
 
-.. code-block:: bash
+    nthreads=4
+    export OMP_NUM_THREADS=$nthreads
+    njobs=$((SLURM_CPUS_PER_TASK / nthreads))
 
-    parallel \
-        -j $SLURM_NTASKS_PER_NODE \
-        --env OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK \
-        ./app <options> {} \
-        ::: val1 val2 ...
+    parallel --jobs $njobs ./app <options> {} ::: val1 val2 ...
 
 Pour en savoir plus
 -------------------
