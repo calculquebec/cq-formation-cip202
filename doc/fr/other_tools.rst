@@ -219,7 +219,7 @@ soumet ces tâches à l’ordonnanceur.
 .. code-block:: console
 
     [alice@narval3 hello]$ submit.run 2
-    Submitting 20 cases from table.dat as 2 jobs using META mode
+    Submitting 18 cases from table.dat as 2 jobs using META mode
 
     Submitting the farm as an Array Job
 
