@@ -96,6 +96,7 @@ To cancel all jobs in the array:
 Exercise
 ''''''''
 
+#. Log in to the virtual cluster with ``ssh login1``.
 #. Go to the directory containing the above script with ``cd
    ~/cq-formation-cip202-main/lab/hello-array``.
 #. Show the script with ``cat hello-job.sh``.

@@ -98,6 +98,7 @@ Ou encore toutes les tâches du vecteur :
 Exercice
 ''''''''
 
+#. Connectez-vous à la grappe virtuelle avec ``ssh login1``.
 #. Allez dans le répertoire contenant le script montré ci-haut : ``cd
    ~/cq-formation-cip202-main/lab/hello-array``.
 #. Affichez le contenu du script avec ``cat hello-job.sh``.
