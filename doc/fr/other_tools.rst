@@ -230,7 +230,7 @@ soumet ces tâches à l’ordonnanceur.
          41169148_2    alice  def-sponsor          hello   R      59:10     1    1        N/A      4G nc31004 (None)
 
 Le fichier ``table.dat`` est modifié lorsque les tâches sont soumises, afin
-d’assigner un index à chaque cas :
+d’assigner un indice à chaque cas :
 
 .. code-block:: console
 

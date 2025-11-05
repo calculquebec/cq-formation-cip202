@@ -36,7 +36,7 @@ tâches :
 
 Un script pour un vecteur de tâches contient l’option ``--array``, qui spécifie
 les répétitions de la tâche et assigne à chacune une valeur entière unique, ici
-de 1 à 10. Cet index est accessible avec ``$SLURM_ARRAY_TASK_ID``.
+de 1 à 10. Cet indice est accessible avec ``$SLURM_ARRAY_TASK_ID``.
 
 Ce script peut être soumis comme n’importe quel autre :
 
@@ -57,10 +57,12 @@ seule :
          40912550_2    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None) 
          40912550_3    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None)
 
-Chaque tâche est identifiée par son index et est indépendante des autres. Ainsi,
-certaines tâches peuvent démarrer tandis que d’autres attendent dans la file.
+Chaque tâche est identifiée par son indice et est indépendante des autres.
+Ainsi, certaines tâches peuvent démarrer tandis que d’autres attendent dans la
+file.
 
-Chaque tâche a son propre fichier de sortie, à nouveau identifié par son index :
+Chaque tâche a son propre fichier de sortie, à nouveau identifié par son
+indice :
 
 .. code-block:: console
 
@@ -71,7 +73,7 @@ Chaque tâche a son propre fichier de sortie, à nouveau identifié par son inde
     slurm-40912550_2.out:Hello from index 2
     slurm-40912550_3.out:Hello from index 3
 
-On peut annuler une des tâches du vecteur avec son index :
+On peut annuler une des tâches du vecteur avec son indice :
 
 .. code-block:: console
 
@@ -93,7 +95,7 @@ Ou encore toutes les tâches du vecteur :
 
     Malgré son nom, la variable ``SLURM_ARRAY_TASK_ID`` n’a rien à voir avec les
     options de parallélisme telles que ``--ntasks`` ou ``--ntasks-per-node``.
-    Elle réfère uniquement à l’index d’une tâche de calcul dans un vecteur.
+    Elle réfère uniquement à l’indice d’une tâche de calcul dans un vecteur.
 
 Exercice
 ''''''''
@@ -120,7 +122,7 @@ de tâches. Cette approche est à proscrire :
 Utiliser les vecteurs
 ---------------------
 
-Les index des tâches à soumettre peuvent être contrôlés avec précision. Voici
+Les indices des tâches à soumettre peuvent être contrôlés avec précision. Voici
 quelques exemples :
 
 - ``--array=0-10`` : De 0 à 10 (11 tâches au total)
@@ -146,7 +148,7 @@ sévèrement diminuée si vous soumettez un grand nombre de tâches. Si vos tâc
 utilisent intensivement le stockage réseau, limiter le nombre de tâches actives
 évite aussi de causer des problèmes d’entrée-sortie.
 
-La variable ``SLURM_ARRAY_TASK_ID`` donne l’index associé à une tâche. Elle est
+La variable ``SLURM_ARRAY_TASK_ID`` donne l’indice associé à une tâche. Elle est
 utilisée dans le script afin de distinguer les tâches. On l’utilise pour :
 
 - Choisir un jeu de données d’entrée (e.g. molécule 1, 2, 3…).
@@ -173,7 +175,7 @@ plusieurs fois. Pour cette raison, il est fréquent d’aliaser
     ./prog --input "mol-$i.pdb" --output "stats-$i.dat"
 
 Il est fréquent d’avoir des fichiers nommés avec des zéros non significatifs,
-par exemple ``mol-001.pdb``, ``...``, ``mol-099.pdb``, ``mol-100.pdb``. L’index
+par exemple ``mol-001.pdb``, ``...``, ``mol-099.pdb``, ``mol-100.pdb``. L’indice
 de la tâche doit alors être converti en une chaîne de caractères remplie avec
 des zéros :
 
@@ -272,12 +274,12 @@ de tâches. Par exemple, si vous étudiez 8 médicaments potentiels et 4 récept
 protéiques, vous pourriez vouloir tester les 32 combinaisons
 médicament/récepteur possibles. Toutefois, Slurm ne permet pas de définir de
 multiples variables avec l’option ``--array`` ; on ne peut que donner une
-séquence d’index. Que faire ?
+séquence d’indices. Que faire ?
 
 Il existe plusieurs solutions possibles à ce problème, mais toutes utilisent la
-même stratégie : convertir un index linéaire :math:`i` en une paire d’index
-:math:`(x,y)`. Donnons au médicament l’index :math:`x \in [0..7]` et au
-récepteur l’index :math:`y \in [0..3]` ; l’index linéaire, pour sa part, sera
+même stratégie : convertir un indice linéaire :math:`i` en une paire d’indices
+:math:`(x,y)`. Donnons au médicament l’indice :math:`x \in [0..7]` et au
+récepteur l’indice :math:`y \in [0..3]` ; l’indice linéaire, pour sa part, sera
 :math:`i \in [0..31]` :
 
 .. figure:: ../images/job-array-2d.svg
@@ -308,13 +310,13 @@ peuvent être faites dans le script de tâche :
 Vecteurs n-dimensionnels
 ''''''''''''''''''''''''
 
-Lorsque le nombre de paramètres à traiter dépasse deux, convertir l’index
-linéaire :math:`i` en index multidimensionnels avec des divisions entières et le
-modulo devient fastidieux. Il existe une alternative simple : créer un fichier
-contenant toutes les combinaisons de paramètres à traiter, une combinaison par
-ligne. Le numéro de ligne dans le fichier devient l’index linéaire :math:`i`.
-Pour convertir :math:`i → (x,y,z,...)`, il suffit de lire les valeurs à la
-ligne correspondante.
+Lorsque le nombre de paramètres à traiter dépasse deux, convertir l’indice
+linéaire :math:`i` en indices multidimensionnels avec des divisions entières et
+le modulo devient fastidieux. Il existe une alternative simple : créer un
+fichier contenant toutes les combinaisons de paramètres à traiter, une
+combinaison par ligne. Le numéro de ligne dans le fichier devient l’indice
+linéaire :math:`i`. Pour convertir :math:`i → (x,y,z,...)`, il suffit de lire
+les valeurs à la ligne correspondante.
 
 Par exemple, supposons que vous simulez la stabilité de deux protéines à trois
 températures différentes avec et sans un agent stabilisant. Un fichier
