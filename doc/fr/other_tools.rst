@@ -21,12 +21,12 @@ Tâche Slurm  Typiquement mono-nœud            Processus distribués (MPI)
 Ce qu’il faut comprendre du précédent tableau, c’est que GLOST passe par une
 `tâche MPI <https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2che_MPI>`__
 (ou *Message Passing Interface*) pour démarrer **des commandes exclusivement
-sérielles** listées dans un fichier texte. Le programme ``glost_launch`` est
+séquentielles** listées dans un fichier texte. Le programme ``glost_launch`` est
 donc une application MPI utilisant une architecture de type
 gestionnaire-travailleur :
 
 - Le processus gestionnaire (numéro 0 dans la figure ci-dessous) distribue une
-  commande sérielle à la fois jusqu’à ce qu’il n’en reste plus.
+  commande séquentielle à la fois jusqu’à ce qu’il n’en reste plus.
 - Lorsqu’ils sont disponibles, les travailleurs demandent la prochaine commande
   à exécuter et en obtiennent une ou sinon l’instruction de quitter.
 
@@ -88,8 +88,8 @@ parallélisme de données. Cet outil a été conçu par l’équipe de SHARCNET
 
 META utilise un vocabulaire spécifique :
 
-- *Cas* (*case*) : un calcul individuel. Il peut s’agir d’un calcul sériel ou
-  parallèle, sur CPU ou GPU.
+- *Cas* (*case*) : un calcul individuel. Il peut s’agir d’un calcul séquentiel
+  ou parallèle, sur CPU ou GPU.
 - *Groupe de cas* (*farm*) : un ensemble de calculs (*cas*) à compléter.
 - *Tâche* (*job*) : une tâche de calcul dans l’ordonnanceur Slurm.
 
@@ -183,8 +183,8 @@ Le fichier ``job_script.sh`` contient les instructions ``#SBATCH`` qui seront
 appliquées à chacune des :math:`N` tâches soumises à l’ordonnanceur. Ce fichier
 doit être édité pour indiquer au moins le temps nécessaire et le compte à
 utiliser. Si vos cas utilisent un programme parallèle ou un GPU, demandez les
-ressources nécessaires dans ce fichier. Cet exemple utilise un programme sériel
-(``sleep``) qui ne demande aucune ressource particulière.
+ressources nécessaires dans ce fichier. Cet exemple utilise un programme
+séquentiel (``sleep``) qui ne demande aucune ressource particulière.
 
 .. code-block:: console
 

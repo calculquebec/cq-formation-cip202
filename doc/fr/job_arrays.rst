@@ -245,7 +245,7 @@ Vecteurs de tâches parallèles
 '''''''''''''''''''''''''''''
 
 Les vecteurs de tâches que nous avons vus jusqu’à maintenant répétaient tous une
-tâche sérielle. Toutefois, n’importe quelle tâche peut être répétée au moyen
+tâche séquentielle. Toutefois, n’importe quelle tâche peut être répétée au moyen
 d’un vecteur, incluant les tâches parallèles.
 
 Les ressources (temps, mémoire, cœurs CPU) demandées quand on soumet un vecteur

@@ -5,7 +5,7 @@ Généralités
 
 Dans `CIP201
 <https://calculquebec.github.io/cq-formation-cip201/fr/task-types/parallel.html>`__,
-nous avons vu la distinction entre des tâches sérielles et des tâches
+nous avons vu la distinction entre des tâches séquentielles et des tâches
 parallèles. Parmi les tâches parallèles, il existe deux sous-catégories :
 
 - Le `parallélisme de traitement
@@ -17,7 +17,7 @@ parallèles. Parmi les tâches parallèles, il existe deux sous-catégories :
   le calcul devrait être accéléré et le résultat, obtenu plus rapidement.
 - Le `parallélisme de données
   <https://fr.wikipedia.org/wiki/Parall%C3%A9lisme_de_donn%C3%A9e>`__.
-  Celui-ci consiste plutôt à répéter une tâche, souvent sérielle et parfois
+  Celui-ci consiste plutôt à répéter une tâche, souvent séquentielle et parfois
   parallèle, avec différentes données d’entrées, par exemple des images, des
   molécules ou des séquences d’ADN. Ainsi, le parallélisme de données vise à
   augmenter le débit de calcul en exécutant de multiples tâches simultanément.
