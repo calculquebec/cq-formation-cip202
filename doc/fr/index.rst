@@ -10,8 +10,8 @@ Nous y explorons une branche du calcul informatique de pointe, le *parallélisme
 de données*, avec des outils permettant de gérer facilement un grand nombre de
 tâches similaires. Ces outils vous seront utiles si votre projet de recherche
 requiert de répéter un calcul des dizaines ou des centaines de fois, par exemple
-pour analyser différents ensembles de données ou faire un *balayage de
-paramètres*.
+pour analyser différents ensembles de données ou faire un balayage de
+paramètres.
 
 Les concepts généraux présentés dans l’:doc:`introduction <introduction>` sont
 indépendants des outils présentés plus loin.

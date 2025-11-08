@@ -10,7 +10,7 @@ Here, we explore a branch of high-performance computing, *data parallelism*,
 using tools that allow for the easy management of large numbers of similar jobs.
 You will find these tools handy if your research project involves repeating a
 calculation tens or hundreds of times, for example to analyse different datasets
-or to perform a *parameter sweep*.
+or to perform a parameter sweep.
 
 The general concepts presented in the :doc:`introduction <introduction>` are
 independent from any particular tool.

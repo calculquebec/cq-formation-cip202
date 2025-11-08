@@ -32,7 +32,7 @@ Quand utiliser le parallélisme de données
   .. figure:: ../images/multiple-files_fr.svg
 
 - Lorsqu’il y a plusieurs combinaisons de paramètres à tester, on voudra faire
-  un *balayage de paramètres*.
+  un balayage de paramètres.
 
   =====  =======  =====
   Masse  Vitesse  Angle
