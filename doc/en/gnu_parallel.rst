@@ -358,21 +358,19 @@ By testing the correspondence of all combinations ``{A,B,C,D}`` x
 #. In the end, there should be 64 files in the ``results`` directory. Some are
    larger than others because alignments were found.
 
-Limiting the number of simultaneous processes
----------------------------------------------
+Nested multi-threaded parallelism
+---------------------------------
 
-For multi-threaded calculations (from 2 to 8 CPU cores), the ``parallel``
-command should not launch as many processes as there are CPU cores on the
-node; we would end up with several threads per CPU core. Therefore, the first
-thing to do is to reduce the number of simultaneous processes.
+For multi-threaded calculations, the ``parallel`` command must not launch as
+many processes as there are CPU cores allocated to the job: there would be
+multiple threads per CPU core. The number of parallel processes must instead be
+limited with the ``-P,--max-procs`` option.
 
-To do this, we use the ``-j`` or ``--jobs`` flag, which allows us to enforce a
-limit on the number of processes running at a time. For example, 10 cases to be
-processed with a maximum of two processes simultaneously:
+For example, 10 cases to treat with a maximum of two parallel processes:
 
 .. code-block:: bash
 
-    [alice@narval1 ~]$ parallel -j 2 'echo {} && sleep 3' ::: {1..10}
+    [alice@narval1 ~]$ parallel -P 2 'echo {} && sleep 3' ::: {1..10}
     # (3 seconds of waiting)
     1
     2
@@ -392,6 +390,7 @@ processed with a maximum of two processes simultaneously:
 In a job script for an OpenMP program using 4 threads of execution:
 
 .. code-block:: bash
+    :emphasize-lines: 5,9-10,14
 
     #!/bin/bash
 
@@ -402,10 +401,11 @@ In a job script for an OpenMP program using 4 threads of execution:
     #SBATCH --account=def-sponsor
 
     nthreads=4
-    export OMP_NUM_THREADS=$nthreads
-    njobs=$((SLURM_CPUS_PER_TASK / nthreads))
+    nprocesses=$((SLURM_CPUS_PER_TASK / nthreads))
 
-    parallel --jobs $njobs ./app <options> {} ::: val1 val2 ...
+    export OMP_NUM_THREADS=$nthreads
+
+    parallel --max-procs $nprocesses ./app <options> {} ::: val1 val2 ...
 
 Find out more
 -------------
