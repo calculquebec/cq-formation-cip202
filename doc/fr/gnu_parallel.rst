@@ -186,7 +186,7 @@ Exercice - Préparer des séquences d’ADN
 
       #. Ajoutez ``parallel`` au début et enlevez l’indentation.
       #. Remplacez les deux itérateurs ``$spec`` par ``{}``.
-      #. Protégez le caractère ``>``, s’il y a lieu.
+      #. Protégez le caractère ``>`` avec des guillemets, s’il y a lieu.
       #. Ajoutez ``:::``, ainsi que les lettres de A à D, inclusivement.
 
    #. Refaites les mêmes étapes pour la commande ``makeblastdb ...``.

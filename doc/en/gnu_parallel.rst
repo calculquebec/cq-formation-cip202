@@ -177,7 +177,7 @@ Exercise - Prepare DNA sequences
 
       #. Add ``parallel`` at the beginning and remove the indentation.
       #. Replace both ``$spec`` iterators with ``{}``.
-      #. Protect the ``>`` character, if applicable.
+      #. Protect the ``>`` character with quotes, if applicable.
       #. Add ``:::``, and the letters A to D inclusive.
 
    #. Repeat the same steps for the ``makeblastdb ...`` command.
