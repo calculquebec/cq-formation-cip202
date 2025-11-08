@@ -10,13 +10,13 @@ GLOST
 of Small Tasks*) is a tool that behaves somewhat like :doc:`gnu_parallel` when
 given a command file. Here is what distinguishes the two tools:
 
-===========  ===============================  ================================
-  Feature            GNU Parallel                        GLOST
-===========  ===============================  ================================
-Command      ``parallel < cmd.txt``           ``srun glost_launch cmd.txt``
-Slurm job    Typically on a single node       Distributed processes (MPI)
-``sbatch``   ``--nodes=1 --cpus-per-task=N``  ``--ntasks=N --cpus-per-task=1``
-===========  ===============================  ================================
+===========  ================================  =============================
+  Feature              GNU Parallel                        GLOST
+===========  ================================  =============================
+Command      ``parallel < cmd.txt``            ``srun glost_launch cmd.txt``
+Slurm job    Typically on a single node        Distributed processes (MPI)
+``sbatch``   ``--ntasks=1 --cpus-per-task=N``  ``--ntasks=N``
+===========  ================================  =============================
 
 From the above table, we understand that GLOST uses an `MPI (Message Passing
 Interface) job
