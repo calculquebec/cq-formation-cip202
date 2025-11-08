@@ -165,8 +165,8 @@ votre script avec :
 
 La longueur de la variable ``SLURM_ARRAY_TASK_ID`` peut rendre le script de
 tâche difficile à lire, particulièrement lorsque la variable est utilisée
-plusieurs fois. Pour cette raison, il est fréquent d’aliaser
-``SLURM_ARRAY_TASK_ID`` à un nom court :
+plusieurs fois. Pour cette raison, il est fréquent de créer un alias court pour
+``SLURM_ARRAY_TASK_ID`` :
 
 .. code-block:: bash
 
