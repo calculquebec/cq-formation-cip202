@@ -223,8 +223,8 @@ Exercise
 
 **Solution**
 
-- Compare your script with ``solution/distrib-job-array.sh``.
-- The ``solution/distrib-job-array-padded.sh`` version adds non-significant
+- Compare your script with ``solution/dist-job-array.sh``.
+- The ``solution/dist-job-array-padded.sh`` version adds non-significant
   zeros.
 
 Complex arrays

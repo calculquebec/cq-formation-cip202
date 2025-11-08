@@ -234,8 +234,8 @@ Exercice
 
 **Solution**
 
-- Comparez votre script avec ``solution/distrib-job-array.sh``.
-- La version ``solution/distrib-job-array-padded.sh`` ajoute des zéros non
+- Comparez votre script avec ``solution/dist-job-array.sh``.
+- La version ``solution/dist-job-array-padded.sh`` ajoute des zéros non
   significatifs.
 
 Vecteurs complexes
