@@ -255,6 +255,7 @@ separator in ``param.txt``, as well as the ``::::`` argument to then specify
 this filename:
 
 .. code-block:: bash
+    :emphasize-lines: 7
 
     [alice@narval1 gnu-parallel]$ cat exec-param.sh
     #!/bin/bash
@@ -286,6 +287,7 @@ before executing them on a compute node:
 The job script will have a simplified ``parallel`` command:
 
 .. code-block:: bash
+    :emphasize-lines: 7
 
     [alice@narval1 gnu-parallel]$ cat exec-cmd.sh
     #!/bin/bash

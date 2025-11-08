@@ -264,6 +264,7 @@ paramètres dans ``param.txt``, ainsi que l’argument ``::::`` pour spécifier
 ensuite ce nom de fichier :
 
 .. code-block:: bash
+    :emphasize-lines: 7
 
     [alice@narval1 gnu-parallel]$ cat exec-param.sh
     #!/bin/bash
@@ -295,6 +296,7 @@ avant leur exécution sur un nœud de calcul :
 Le script de tâche aura une commande ``parallel`` simplifiée :
 
 .. code-block:: bash
+    :emphasize-lines: 7
 
     [alice@narval1 gnu-parallel]$ cat exec-cmd.sh
     #!/bin/bash
