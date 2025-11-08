@@ -1,10 +1,10 @@
-Data parallelism on the clusters
-================================
+Managing large batches of jobs
+==============================
 
 `Français <../fr/index.html>`_
 
-This intermediate-level workshop (CIP202) is the continuation of `Running jobs:
-resources and monitoring
+This intermediate-level workshop (CIP202) is the continuation of `Job monitoring
+and resource estimation
 <https://calculquebec.github.io/cq-formation-cip201/en/index.html>`_ (CIP201).
 Here, we explore a branch of high-performance computing, *data parallelism*,
 using tools that allow for the easy management of large numbers of similar jobs.

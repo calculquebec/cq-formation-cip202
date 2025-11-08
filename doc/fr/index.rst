@@ -1,10 +1,10 @@
-Parallélisme de données sur les grappes
-=======================================
+Gestion de grands lots de tâches
+================================
 
 `English <../en/index.html>`_
 
-Cet atelier de niveau intermédiaire (CIP202) est la suite de l'atelier `Tâches
-de calcul : ressources et suivi
+Cet atelier de niveau intermédiaire (CIP202) est la suite de l'atelier `Suivi
+des tâches de calcul et estimation des ressources
 <https://calculquebec.github.io/cq-formation-cip201/fr/index.html>`_ (CIP201).
 Nous y explorons une branche du calcul informatique de pointe, le *parallélisme
 de données*, avec des outils permettant de gérer facilement un grand nombre de

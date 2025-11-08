@@ -54,7 +54,7 @@ exclude_patterns = []
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
     'logo': {
-        'text': 'Data parallelism on the clusters (CIP202)',
+        'text': 'Managing large batches of jobs (CIP202)',
         'image_light': '../images/logo.png'
     }
 }
