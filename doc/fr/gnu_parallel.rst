@@ -372,7 +372,7 @@ Nombre limité de cas en parallèle
 ---------------------------------
 
 Pour les calculs multi-fils (de 2 à 8 cœurs CPU), la commande ``parallel`` ne
-doit pas lancer autant de processus qu’il y a de cœurs CPU sur le nœeud ; on se
+doit pas lancer autant de processus qu’il y a de cœurs CPU sur le nœud ; on se
 retrouverait avec plusieurs fils par cœur CPU. Ainsi, la première chose à faire
 est de réduire le nombre de processus en simultané.
 
