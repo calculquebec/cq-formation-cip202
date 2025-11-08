@@ -238,15 +238,17 @@ job can be repeated with an array, including parallel ones.
 
 When submitting a job array, the requested resources apply to each job, not to
 the array globally. For instance, to submit 10 jobs where an MPI program runs on
-8 CPU cores in each job, the following script requests 8 cores, not 80:
+8 CPU cores on 1 compute node in each job, the following script requests 8
+cores, not 80:
 
 .. code-block:: bash
-    :emphasize-lines: 4,7
+    :emphasize-lines: 4-5,8
 
     #!/bin/bash
 
     #SBATCH --job-name=param-sweep
-    #SBATCH --ntasks=8
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=8
     #SBATCH --mem-per-cpu=2G
     #SBATCH --time=6:00:00
     #SBATCH --array=1-10

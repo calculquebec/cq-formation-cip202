@@ -250,16 +250,17 @@ d’un vecteur, incluant les tâches parallèles.
 
 Les ressources (temps, mémoire, cœurs CPU) demandées quand on soumet un vecteur
 s’appliquent à chaque tâche et non globalement. Par exemple, pour exécuter un
-programme MPI 10 fois avec 8 cœurs CPU chaque fois, le script suivant demande 8
-cœurs et non 80 :
+programme MPI 10 fois avec 8 cœurs CPU sur 1 nœud de calcul chaque fois, le
+script suivant demande 8 cœurs et non 80 :
 
 .. code-block:: bash
-    :emphasize-lines: 4,7
+    :emphasize-lines: 4-5,8
 
     #!/bin/bash
 
     #SBATCH --job-name=param-sweep
-    #SBATCH --ntasks=8
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=8
     #SBATCH --mem-per-cpu=2G
     #SBATCH --time=6:00:00
     #SBATCH --array=1-10
