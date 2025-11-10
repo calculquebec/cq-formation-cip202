@@ -373,10 +373,10 @@ Parallélisme multi-fils imbriqué
 
 Pour les calculs multi-fils, la commande ``parallel`` ne doit pas lancer autant
 de processus qu’il y a de cœurs CPU alloués à la tâche : il y aurait alors
-plusieurs fils par cœur CPU. Il faut plutôt limiter le nombre de processus
-parallèles avec l’option ``-P,--max-procs``.
+plusieurs fils par cœur CPU. Il faut plutôt limiter le nombre de processus avec
+l’option ``-P,--max-procs``.
 
-Par exemple, 10 cas à traiter avec un maximum de deux processus parallèles :
+Par exemple, 10 cas à traiter avec un maximum de deux processus en parallèle :
 
 .. code-block:: bash
 

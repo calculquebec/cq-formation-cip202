@@ -363,10 +363,10 @@ Nested multi-threaded parallelism
 
 For multi-threaded calculations, the ``parallel`` command must not launch as
 many processes as there are CPU cores allocated to the job: there would be
-multiple threads per CPU core. The number of parallel processes must instead be
-limited with the ``-P,--max-procs`` option.
+multiple threads per CPU core. The number of processes must instead be limited
+with the ``-P,--max-procs`` option.
 
-For example, 10 cases to treat with a maximum of two parallel processes:
+For example, 10 cases to treat with a maximum of two processes in parallel:
 
 .. code-block:: bash
 
