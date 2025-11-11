@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Job Arrays &#8212; CIP202</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'job_arrays';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GNU Parallel" href="gnu_parallel.html" />
+    <link rel="prev" title="Generalities" href="introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Managing large batches of jobs (CIP202)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data parallelism</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Generalities</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Job Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gnu_parallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other_tools.html">Other Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">External links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/en">Alliance Technical Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/en/academic-research-services/training/">Calcul Québec Training</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/job_arrays.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Job Arrays</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basics">The basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-job-arrays">Why use job arrays?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-job-arrays">Using job arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-arrays">Complex arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-job-arrays">Parallel job arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-arrays">2D arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-dimensionnal-arrays">N-dimensionnal arrays</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-more">Find out more</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="job-arrays">
+<h1>Job Arrays<a class="headerlink" href="#job-arrays" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="../fr/job_arrays.html">Français</a></p>
+<p><a class="reference external" href="https://docs.alliancecan.ca/wiki/Job_arrays/en">Job arrays</a> are a feature of
+the Slurm job scheduler. They allow using the same script to submit many jobs
+with a single command.</p>
+<p>Job arrays are the ideal tool when:</p>
+<ul class="simple">
+<li><p>You have many similar jobs to submit.</p></li>
+<li><p>These jobs are not too short (at least one hour of requested time).</p></li>
+<li><p>Their number does not exceed one thousand.</p></li>
+</ul>
+<p>For shorter or more numerous jobs, a different tool should be used, such as
+<a class="reference internal" href="gnu_parallel.html"><span class="doc">GNU Parallel</span></a>.</p>
+<section id="the-basics">
+<h2>The basics<a class="headerlink" href="#the-basics" title="Link to this heading">#</a></h2>
+<p>The following <code class="docutils literal notranslate"><span class="pre">hello-job.sh</span></code> script is a minimal example of a job array:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=hello</span>
+<span class="hll"><span class="c1">#SBATCH --array=1-10</span>
+</span>
+<span class="hll"><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from index </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="s2">&quot;</span>
+</span>
+sleep<span class="w"> </span><span class="m">60</span>
+</pre></div>
+</div>
+<p>A job array script includes the <code class="docutils literal notranslate"><span class="pre">--array</span></code> option, which sets the job’s
+repetitions and gives each one a unique index, here from 1 to 10. This index is
+accessible using <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code>.</p>
+<p>This script can be submitted like any other:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 hello-array]$ </span>sbatch<span class="w"> </span>hello-job.sh
+<span class="go">Submitted batch job 40912550</span>
+</pre></div>
+</div>
+<p>However, this command creates 10 jobs in the scheduler rather than one:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 hello-array]$ </span>sq
+<span class="go">          JOBID     USER      ACCOUNT           NAME  ST  TIME_LEFT NODES CPUS TRES_PER_N MIN_MEM NODELIST (REASON)</span>
+<span class="go">40912550_[4-10]    alice  def-sponsor my-first-array  PD    1:00:00     1    1        N/A    256M          (Priority)</span>
+<span class="go">     40912550_1    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None)</span>
+<span class="go">     40912550_2    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None)</span>
+<span class="go">     40912550_3    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None)</span>
+</pre></div>
+</div>
+<p>Each job is identified by its index and is independent from the others.
+Therefore, some jobs might start while others wait in the queue.</p>
+<p>Each job gets its own output file, again identified by the job’s index:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 hello-array]$ </span>ls<span class="w"> </span>slurm-*.out
+<span class="go">slurm-40912550_1.out  slurm-40912550_2.out  slurm-40912550_3.out</span>
+<span class="gp">[alice@narval1 hello-array]$ </span>grep<span class="w"> </span>Hello<span class="w"> </span>slurm-*.out
+<span class="go">slurm-40912550_1.out:Hello from index 1</span>
+<span class="go">slurm-40912550_2.out:Hello from index 2</span>
+<span class="go">slurm-40912550_3.out:Hello from index 3</span>
+</pre></div>
+</div>
+<p>To cancel a specific job in the array, specify its index:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>scancel<span class="w"> </span>40912550_5
+</pre></div>
+</div>
+<p>To cancel a range of jobs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>scancel<span class="w"> </span>40912550_<span class="o">[</span><span class="m">6</span>-10<span class="o">]</span>
+</pre></div>
+</div>
+<p>To cancel all jobs in the array:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>scancel<span class="w"> </span><span class="m">40912550</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Despite its name, the <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> variable has nothing to do
+with parallelism options such as <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code>. It
+only refers to a job’s index in an array.</p>
+</div>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Log in to the virtual cluster with <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">login1</span></code>.</p></li>
+<li><p>Go to the directory containing the above script with <code class="docutils literal notranslate"><span class="pre">cd</span>
+<span class="pre">~/cq-formation-cip202-main/lab/hello-array</span></code>.</p></li>
+<li><p>Show the script with <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">hello-job.sh</span></code>.</p></li>
+<li><p>Submit the script with <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and monitor the jobs with <code class="docutils literal notranslate"><span class="pre">sq</span></code>.</p></li>
+<li><p>Once all jobs have completed, show the output files with
+<code class="docutils literal notranslate"><span class="pre">ls</span></code> and <code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p></li>
+</ol>
+</section>
+<section id="why-use-job-arrays">
+<h3>Why use job arrays?<a class="headerlink" href="#why-use-job-arrays" title="Link to this heading">#</a></h3>
+<p>Rather than using an array, it would be possible to submit tens or hundreds of
+job scripts, manually or through an automated loop. This is to be avoided:</p>
+<ul class="simple">
+<li><p>Fast, repeated calls to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> overload the scheduler.</p></li>
+<li><p>Maintaining numerous copies of your job script is more complicated and
+error-prone.</p></li>
+</ul>
+</section>
+</section>
+<section id="using-job-arrays">
+<h2>Using job arrays<a class="headerlink" href="#using-job-arrays" title="Link to this heading">#</a></h2>
+<p>The submitted jobs’ indices can be chosen freely. A few examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=0-10</span></code>: From 0 to 10 (11 jobs total)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=1-9:2</span></code>: 1, 3, 5, 7, 9 (step of 2)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=1,2,5</span></code>: 1, 2, 5</p></li>
+</ul>
+<p>The syntax used in the last example is particularly useful to resubmit one or
+several failed jobs. To do so, <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--array</span></code> can be used instead of
+modifying the job script:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">1</span>,2,5<span class="w"> </span>job.sh
+</pre></div>
+</div>
+<p>Finally, it is possible to limit the number of jobs that can run simultaneously:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=1-1000%10</span></code>: At most 10 jobs can run simultaneously.</p></li>
+</ul>
+<p>This is useful to limit your jobs’ throughput to avoid affecting your
+colleagues’ jobs’ priority when you submit a large number of jobs. If your jobs
+make intensive usage of network storage, limiting the number of running jobs
+also avoids causing input/output problems.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> variable gives the index associated with a job. It
+is used in the script to distinguish between the jobs. It can be used to:</p>
+<ul class="simple">
+<li><p>Choose an input data set (e.g. molecule 1, 2, 3…).</p></li>
+<li><p>Determine the value of a parameter to test.</p></li>
+<li><p>Number an output file.</p></li>
+</ul>
+<p>For instance, if you had input files named <code class="docutils literal notranslate"><span class="pre">mol-1.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">mol-2.pdb</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mol-3.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>, you could refer to them in your script with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./prog<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;mol-</span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="s2">.pdb&quot;</span>
+</pre></div>
+</div>
+<p>The length of the <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> variable can make a job script
+difficult to read, especially when it is used multiple times. For this reason,
+<code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> is frequently aliased to a short name:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">i</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+./prog<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;mol-</span><span class="nv">$i</span><span class="s2">.pdb&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;stats-</span><span class="nv">$i</span><span class="s2">.dat&quot;</span>
+</pre></div>
+</div>
+<p>It is also frequent for file names to include non-significant zeros, such as
+<code class="docutils literal notranslate"><span class="pre">mol-001.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>, <code class="docutils literal notranslate"><span class="pre">mol-099.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">mol-100.pdb</span></code>. The job index must
+then be converted to a character string and padded with zeros:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">i</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span><span class="w"> </span>%03d<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="k">)</span>
+
+./prog<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;mol-</span><span class="nv">$i</span><span class="s2">.pdb&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;stats-</span><span class="nv">$i</span><span class="s2">.dat&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">printf</span></code> prints one or more values according to a <em>format</em>, here
+<code class="docutils literal notranslate"><span class="pre">%03d</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%</span></code>: Start formatting a value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: Pad with non-significant zeros</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code>: Output a three-character string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: Interpret the value as an integer number</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">$(cmd)</span></code> syntax is a <em>command substitution</em>. Here, <code class="docutils literal notranslate"><span class="pre">cmd</span></code>’s output is
+used to set <code class="docutils literal notranslate"><span class="pre">i</span></code>’s value.</p>
+</div>
+<section id="id2">
+<h3>Exercise<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Convert a standard job script into a job array script.</p></li>
+<li><p>Submit a job array that generates ten numbered files.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Familiarise yourself with the initial job script, which generates a file
+containing random numbers taken from a normal distribution.</p>
+<ol class="arabic simple">
+<li><p>Go to the exercise directory with
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/cq-formation-cip202-main/lab/dist-array</span></code>.</p></li>
+<li><p>Show the job script with <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">dist-job-single.sh</span></code>.</p></li>
+<li><p>Submit the script with <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">dist-job-single.sh</span></code>.</p></li>
+<li><p>Once the job has completed, check that the output file was generated with
+<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">results</span></code>.</p></li>
+</ol>
+</li>
+<li><p>Modify the script to make a job array.</p>
+<ol class="arabic simple">
+<li><p>Copy it under a different name: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">dist-job-single.sh</span>
+<span class="pre">dist-job-array.sh</span></code>.</p></li>
+<li><p>Edit the new script with <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">dist-job-array.sh</span></code>.</p></li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">--array</span></code> option to create a 10-job array.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code> to set the output file’s name.</p></li>
+<li><p>Optionally, use <code class="docutils literal notranslate"><span class="pre">printf</span></code> to generate output files whose names all have
+the same number of characters.</p></li>
+</ol>
+</li>
+<li><p>Submit the script with <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p></li>
+<li><p>Once all jobs have completed, check that the ten output files have been
+generated.</p></li>
+</ol>
+<p><strong>Solution</strong></p>
+<ul class="simple">
+<li><p>Compare your script with <code class="docutils literal notranslate"><span class="pre">solution/dist-job-array.sh</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">solution/dist-job-array-padded.sh</span></code> version adds non-significant
+zeros.</p></li>
+</ul>
+</section>
+</section>
+<section id="complex-arrays">
+<h2>Complex arrays<a class="headerlink" href="#complex-arrays" title="Link to this heading">#</a></h2>
+<section id="parallel-job-arrays">
+<h3>Parallel job arrays<a class="headerlink" href="#parallel-job-arrays" title="Link to this heading">#</a></h3>
+<p>The job arrays we have seen until now all repeated a serial job. However, any
+job can be repeated with an array, including parallel ones.</p>
+<p>When submitting a job array, the requested resources apply to each job, not to
+the array globally. For instance, to submit 10 jobs where an MPI program runs on
+8 CPU cores on 1 compute node in each job, the following script requests 8
+cores, not 80:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=param-sweep</span>
+<span class="hll"><span class="c1">#SBATCH --nodes=1</span>
+</span><span class="hll"><span class="c1">#SBATCH --ntasks-per-node=8</span>
+</span><span class="c1">#SBATCH --mem-per-cpu=2G</span>
+<span class="c1">#SBATCH --time=6:00:00</span>
+<span class="hll"><span class="c1">#SBATCH --array=1-10</span>
+</span>
+srun<span class="w"> </span>./prog<span class="w"> </span>--param<span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</pre></div>
+</div>
+</section>
+<section id="d-arrays">
+<h3>2D arrays<a class="headerlink" href="#d-arrays" title="Link to this heading">#</a></h3>
+<p>We sometimes want to vary more than one parameter in a job array. For example,
+if you study 8 drug candidates and 4 protein receptors, you might want to test
+all 32 possible drug-receptor combinations. However, Slurm does not allow
+defining multiple variables with the <code class="docutils literal notranslate"><span class="pre">--array</span></code> option; we can only give an
+index sequence. What should we do?</p>
+<p>There are several possible solutions to this problem, but all use the same
+strategy: converting a linear index <span class="math notranslate nohighlight">\(i\)</span> to an <span class="math notranslate nohighlight">\((x,y)\)</span> index pair.
+Let us give each drug an index <span class="math notranslate nohighlight">\(x \in [0..7]\)</span> and each receptor an index
+<span class="math notranslate nohighlight">\(y \in [0..3]\)</span>; the linear index is <span class="math notranslate nohighlight">\(i \in [0..31]\)</span>:</p>
+<figure class="align-default">
+<img alt="_images/job-array-2d.svg" src="_images/job-array-2d.svg" />
+</figure>
+<p>To convert <span class="math notranslate nohighlight">\(i → (x,y)\)</span>, we use integer division, <span class="math notranslate nohighlight">\(\text{div}\)</span>, and
+remainder (or modulo), <span class="math notranslate nohighlight">\(\text{mod}\)</span>. These conversions can be done in the
+job script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --array=0-31</span>
+
+<span class="nv">i</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+<span class="hll"><span class="nv">x</span><span class="o">=</span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">8</span><span class="k">))</span><span class="w">  </span><span class="c1"># mod</span>
+</span><span class="hll"><span class="nv">y</span><span class="o">=</span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">8</span><span class="k">))</span><span class="w">  </span><span class="c1"># div</span>
+</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing drug candidate </span><span class="nv">$x</span><span class="s2"> vs receptor </span><span class="nv">$y</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">$((expr))</span></code> syntax is an <em>arithmetic expansion</em>, which allows simple
+calculations (limited to integers).</p>
+</div>
+</section>
+<section id="n-dimensionnal-arrays">
+<h3>N-dimensionnal arrays<a class="headerlink" href="#n-dimensionnal-arrays" title="Link to this heading">#</a></h3>
+<p>When the number of parameters to work with exceeds two, converting the linear
+index <span class="math notranslate nohighlight">\(i\)</span> to multidimensional indices with integer divisions and modulo
+becomes fastidious. There is a simple alternative: create a file containing all
+the desired parameter combinations, with one such combination per line. The line
+number in the file becomes the linear index <span class="math notranslate nohighlight">\(i\)</span>. To convert <span class="math notranslate nohighlight">\(i →
+(x,y,z,...)\)</span>, we just read the values on the corresponding line.</p>
+<p>For example, suppose you simulate the stability of two proteins, at three
+different temperatures, with and without a stabilising agent. A file
+<code class="docutils literal notranslate"><span class="pre">params.txt</span></code> containing the 12 possible parameter combinations can be created
+with the following <code class="docutils literal notranslate"><span class="pre">make-params.sh</span></code> script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">proteins</span><span class="o">=</span><span class="s2">&quot;A B&quot;</span>
+<span class="nv">temperatures</span><span class="o">=</span><span class="s2">&quot;30 37 44&quot;</span>
+
+rm<span class="w"> </span>-f<span class="w"> </span>params.txt
+
+<span class="k">for</span><span class="w"> </span>prot<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$proteins</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>temp<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$temperatures</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span>agent<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span>false<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$prot</span><span class="w"> </span><span class="nv">$temp</span><span class="w"> </span><span class="nv">$agent</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>params.txt
+<span class="w">        </span><span class="k">done</span>
+<span class="w">    </span><span class="k">done</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>bash<span class="w"> </span>make-params.sh
+<span class="gp">[alice@narval1 ~]$ </span>cat<span class="w"> </span>params.txt
+<span class="go">A 30 true</span>
+<span class="go">A 30 false</span>
+<span class="go">A 37 true</span>
+<span class="go">A 37 false</span>
+<span class="go">A 44 true</span>
+<span class="go">A 44 false</span>
+<span class="go">B 30 true</span>
+<span class="go">B 30 false</span>
+<span class="go">B 37 true</span>
+<span class="go">B 37 false</span>
+<span class="go">B 44 true</span>
+<span class="go">B 44 false</span>
+</pre></div>
+</div>
+<p>The array job script reads one line from this file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --array=1-12</span>
+
+<span class="nv">i</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+<span class="hll"><span class="nb">read</span><span class="w"> </span>prot<span class="w"> </span>temp<span class="w"> </span>agent<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="k">$(</span>sed<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">q;d&quot;</span><span class="w"> </span>params.txt<span class="k">)</span>
+</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Loading structure for protein </span><span class="nv">$prot</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Setting temperature to </span><span class="nv">$temp</span><span class="s2"> degrees&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="nv">$agent</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Adding stabilizing agent&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sed</span></code> (stream editor) command is a text manipulation tool. It is used
+here to read line <code class="docutils literal notranslate"><span class="pre">${i}</span></code> from the parameter file. The <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span></code> syntax is a
+here-string: <code class="docutils literal notranslate"><span class="pre">sed</span></code>’s output is redirected to the <code class="docutils literal notranslate"><span class="pre">read</span></code> command, which
+sets variables <code class="docutils literal notranslate"><span class="pre">prot</span></code>, <code class="docutils literal notranslate"><span class="pre">temp</span></code>, and <code class="docutils literal notranslate"><span class="pre">agent</span></code>.</p>
+<p>A pipe such as <code class="docutils literal notranslate"><span class="pre">sed</span> <span class="pre">[...]</span> <span class="pre">|</span> <span class="pre">read</span> <span class="pre">[...]</span></code> could not be used here since pipes
+are run in a sub-process that does not have access to the parent process’
+variables, that is the process running the script. The values would be
+lost immediately after reading them.</p>
+</div>
+<p>In addition to being simple, this approach to multidimensional job arrays is
+flexible:</p>
+<ul class="simple">
+<li><p>It works regardless of the number of parameters.</p></li>
+<li><p>The number of parameters can easily be changed.</p></li>
+<li><p>Any parameter combinations can be used.</p>
+<ul>
+<li><p>This makes it possible to avoid processing combinations that you know are
+invalid. For example, if you simulate a model with various combinations of
+temperature and humidity but are only interested in conditions above the dew
+point, you can exclude in advance any temperature/humidity combination that
+you know is under that point, by simply not adding it to your parameter
+file.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="find-out-more">
+<h2>Find out more<a class="headerlink" href="#find-out-more" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Alliance Technical Documentation: <a class="reference external" href="https://docs.alliancecan.ca/wiki/Job_arrays/en">Job arrays</a></p></li>
+<li><p>Slurm documentation: <a class="reference external" href="https://slurm.schedmd.com/job_array.html">Job Array Support</a></p></li>
+<li><p>Webinar: <a class="reference external" href="https://raw.githubusercontent.com/WestGrid/trainingMaterials/gh-pages/materials/gmxtools.pdf">Automating the GROMACS analysis tools on HPC systems</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Generalities</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gnu_parallel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GNU Parallel</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basics">The basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-job-arrays">Why use job arrays?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-job-arrays">Using job arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-arrays">Complex arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-job-arrays">Parallel job arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-arrays">2D arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-dimensionnal-arrays">N-dimensionnal arrays</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-more">Find out more</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

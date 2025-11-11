@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Autres outils &#8212; CIP202</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'other_tools';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="GNU Parallel" href="gnu_parallel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Gestion de grands lots de tâches (CIP202)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallélisme de données</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Généralités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_arrays.html">Vecteurs de tâches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gnu_parallel.html">GNU Parallel</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Autres outils</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Liens externes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">Documentation technique de l’Alliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/services-aux-chercheurs/formation/">Formations de Calcul Québec</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/other_tools.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Thème" data-bs-title="Thème"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Clair"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Sombre"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Paramètres système"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Autres outils</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glost">GLOST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meta-farm">META-Farm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Démonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charger-le-module-logiciel">1. Charger le module logiciel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creer-un-groupe-de-cas">2. Créer un groupe de cas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configurer-les-cas-et-les-taches">3. Configurer les cas et les tâches</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soumettre-les-taches">4. Soumettre les tâches</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#consulter-les-resultats">5. Consulter les résultats</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-en-savoir-plus">Pour en savoir plus</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="autres-outils">
+<h1>Autres outils<a class="headerlink" href="#autres-outils" title="Lien vers cette rubrique">#</a></h1>
+<p><a class="reference external" href="../en/other_tools.html">English</a></p>
+<section id="glost">
+<h2>GLOST<a class="headerlink" href="#glost" title="Lien vers cette rubrique">#</a></h2>
+<p><a class="reference external" href="https://docs.alliancecan.ca/wiki/GLOST/fr">GLOST</a> (pour <em>Greedy Launcher
+Of Small Tasks</em>) est un outil faisant penser à <a class="reference internal" href="gnu_parallel.html"><span class="doc">GNU Parallel</span></a> lorsqu’un
+fichier de commandes est fourni. Voici ce qui différencie les deux outils :</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Comparaison</p></th>
+<th class="head"><p>GNU Parallel</p></th>
+<th class="head"><p>GLOST</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Commande</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">parallel</span> <span class="pre">&lt;</span> <span class="pre">cmd.txt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">glost_launch</span> <span class="pre">cmd.txt</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tâche Slurm</p></td>
+<td><p>Typiquement mono-nœud</p></td>
+<td><p>Processus distribués (MPI)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks=1</span> <span class="pre">--cpus-per-task=N</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks=N</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ce qu’il faut comprendre du précédent tableau, c’est que GLOST passe par une
+<a class="reference external" href="https://docs.alliancecan.ca/wiki/Running_jobs/fr#T%C3%A2che_MPI">tâche MPI</a>
+(ou <em>Message Passing Interface</em>) pour démarrer <strong>des commandes exclusivement
+séquentielles</strong> listées dans un fichier texte. Le programme <code class="docutils literal notranslate"><span class="pre">glost_launch</span></code> est
+donc une application MPI utilisant une architecture de type
+gestionnaire-travailleur :</p>
+<ul class="simple">
+<li><p>Le processus gestionnaire (numéro 0 dans la figure ci-dessous) distribue une
+commande séquentielle à la fois jusqu’à ce qu’il n’en reste plus.</p></li>
+<li><p>Lorsqu’ils sont disponibles, les travailleurs demandent la prochaine commande
+à exécuter et en obtiennent une ou sinon l’instruction de quitter.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="_images/glost-mpi.svg" src="_images/glost-mpi.svg" />
+</figure>
+<p>Pour cette partie, allez dans le répertoire des exemples avec :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/cq-formation-cip202-main/lab/gnu-parallel
+</pre></div>
+</div>
+<p>Pour utiliser GLOST, il faut d’abord charger un module :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>glost/0.3.1
+</pre></div>
+</div>
+<p>Ensuite, on peut directement tester avec quatre processus (<code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--ntasks</span></code>) et
+un cœur par processus (<code class="docutils literal notranslate"><span class="pre">-c,</span> <span class="pre">--cpus-per-task</span></code>) :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>glost_launch<span class="w"> </span>cmd.txt
+srun:<span class="w"> </span>job<span class="w"> </span><span class="m">41153816</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+srun:<span class="w"> </span>job<span class="w"> </span><span class="m">41153816</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+<span class="c1">#executed by process  2 in 0.006s with status  0 : echo $((3*6)) &gt; prod_3x6</span>
+<span class="c1">#executed by process  3 in 0.006s with status  0 : echo $((5*4)) &gt; prod_5x4</span>
+<span class="c1">#executed by process  1 in 0.007s with status  0 : echo $((3*4)) &gt; prod_3x4</span>
+<span class="c1">#executed by process  2 in 0.006s with status  0 : echo $((5*6)) &gt; prod_5x6</span>
+<span class="c1">#executed by process  3 in 0.006s with status  0 : echo $((5*8)) &gt; prod_5x8</span>
+<span class="c1">#executed by process  1 in 0.008s with status  0 : echo $((7*6)) &gt; prod_7x6</span>
+<span class="c1">#executed by process  2 in 0.005s with status  0 : echo $((7*8)) &gt; prod_7x8</span>
+</pre></div>
+</div>
+<p>Dans l’exemple ci-dessus, il n’y a effectivement que trois des quatre processus
+qui ont fait des calculs. Avec le code de sortie (<code class="docutils literal notranslate"><span class="pre">status</span> <span class="pre">0</span></code> quand tout va
+bien), c’est possible d’identifier les commandes à reprendre lors d’une
+prochaine tâche GLOST.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un code de sortie est un nombre entier retourné par un programme lorsqu’il
+se termine. Tous les programmes génèrent un code de sortie, même s’ils
+« plantent » ou génèrent des erreurs. Par convention, un code de sortie de
+zéro indique que le programme s’est terminé avec succès ; toute autre valeur
+indique une erreur. Le code de sortie de la dernière commande exécutée peut
+être obtenu avec <code class="docutils literal notranslate"><span class="pre">$?</span></code>.</p>
+</div>
+</section>
+<section id="meta-farm">
+<h2>META-Farm<a class="headerlink" href="#meta-farm" title="Lien vers cette rubrique">#</a></h2>
+<p><a class="reference external" href="https://docs.alliancecan.ca/wiki/META-Farm/fr">META-Farm</a> (ou, simplement,
+META) est un outil avancé pour le parallélisme de données sur les grappes de
+calcul qui utilisent l’ordonnanceur de tâches Slurm. Il combine certaines des
+capacités des vecteurs de tâches et de GNU Parallel pour une flexibilité accrue.
+Son utilisation est toutefois plus complexe que celle des outils que nous avons
+vus jusqu’à maintenant. Considérez META si votre projet utilise intensivement le
+parallélisme de données. Cet outil a été conçu par l’équipe de SHARCNET
+(Ontario) et fonctionne sur toutes les grappes nationales de l’Alliance.</p>
+<p>META utilise un vocabulaire spécifique :</p>
+<ul class="simple">
+<li><p><em>Cas</em> (<em>case</em>) : un calcul individuel. Il peut s’agir d’un calcul séquentiel
+ou parallèle, sur CPU ou GPU.</p></li>
+<li><p><em>Groupe de cas</em> (<em>farm</em>) : un ensemble de calculs (<em>cas</em>) à compléter.</p></li>
+<li><p><em>Tâche</em> (<em>job</em>) : une tâche de calcul dans l’ordonnanceur Slurm.</p></li>
+</ul>
+<p>Si l’on applique ce vocabulaire aux vecteurs de tâches, on pourrait dire que
+chaque cas d’un groupe est traité dans une tâche ; il y a autant de tâches que
+de cas. Avec GNU Parallel, inversement, tous les cas d’un groupe sont traités
+dans une seule tâche. META permet de faire l’un ou l’autre ou même d’utiliser
+une stratégie intermédiaire, le mode META.</p>
+<p>Le fonctionnement du mode META est illustré dans la figure ci-dessous. Lorsque
+l’on débute le traitement d’un groupe de cas avec <code class="docutils literal notranslate"><span class="pre">submit.run</span></code>, on spécifie le
+nombre <span class="math notranslate nohighlight">\(N\)</span> de tâches à soumettre à l’ordonnanceur Slurm. Lorsque la
+première de ces tâches démarre, elle débute le premier cas. Dès que son
+traitement est terminé, la tâche passe au cas suivant. À mesure que les autres
+tâches démarrent, elles aussi traitent un cas à la fois. Lorsque tous les cas
+sont résolus, toutes les tâches s’arrêtent aussitôt.</p>
+<figure class="align-default">
+<img alt="_images/meta-farm_fr.svg" src="_images/meta-farm_fr.svg" />
+</figure>
+<p>Cette façon de faire combine des avantages des vecteurs de tâches et de GNU
+Parallel. Comme avec les vecteurs, il est possible d’avoir plusieurs tâches
+actives en même temps dans l’ordonnanceur, ce qui augmente le débit de calcul.
+Comme avec GNU Parallel, il est possible de combiner efficacement des calculs
+courts dans une seule tâche, ce qui évite de surcharger l’ordonnanceur.</p>
+<p>META offre d’autres fonctionnalités comme la resoumission automatique des cas
+qui ont échoué et l’exécution d’une tâche de post-traitement lorsqu’un groupe de
+cas est complété.</p>
+<section id="demonstration">
+<h3>Démonstration<a class="headerlink" href="#demonstration" title="Lien vers cette rubrique">#</a></h3>
+<section id="charger-le-module-logiciel">
+<h4>1. Charger le module logiciel<a class="headerlink" href="#charger-le-module-logiciel" title="Lien vers cette rubrique">#</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>meta-farm/1.0.3
+</pre></div>
+</div>
+</section>
+<section id="creer-un-groupe-de-cas">
+<h4>2. Créer un groupe de cas<a class="headerlink" href="#creer-un-groupe-de-cas" title="Lien vers cette rubrique">#</a></h4>
+<p>À chaque groupe de cas correspond un répertoire, créé par la commande META
+<code class="docutils literal notranslate"><span class="pre">farm_init.run</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 ~]$ </span>farm_init.run<span class="w"> </span>hello
+<span class="go">Success!</span>
+<span class="gp">[alice@narval3 ~]$ </span><span class="nb">cd</span><span class="w"> </span>hello/
+</pre></div>
+</div>
+<p>Cette même commande ajoute au répertoire les fichiers nécessaires pour
+configurer le groupe et les cas.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 hello]$ </span>ls
+<span class="go">config.h  job_script.sh  resubmit_script.sh  single_case.sh  table.dat</span>
+</pre></div>
+</div>
+</section>
+<section id="configurer-les-cas-et-les-taches">
+<h4>3. Configurer les cas et les tâches<a class="headerlink" href="#configurer-les-cas-et-les-taches" title="Lien vers cette rubrique">#</a></h4>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">table.dat</span></code> liste les cas, un par ligne. Le fichier généré par
+défaut contient 1300 cas. Chaque cas appelle la commande <code class="docutils literal notranslate"><span class="pre">sleep</span></code> avec un
+argument aléatoire.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 hello]$ </span>wc<span class="w"> </span>-l<span class="w"> </span>table.dat
+<span class="go">1300 table.dat</span>
+<span class="gp">[alice@narval3 hello]$ </span>head<span class="w"> </span>table.dat
+<span class="go">sleep 26</span>
+<span class="go">sleep 26</span>
+<span class="go">sleep 28</span>
+<span class="go">sleep 30</span>
+<span class="go">sleep 29</span>
+<span class="go">sleep 25</span>
+<span class="go">sleep 25</span>
+<span class="go">sleep 28</span>
+<span class="go">sleep 27</span>
+<span class="go">sleep 29</span>
+</pre></div>
+</div>
+<p>Pour simplifier cet exemple, nous ne conserverons que les 18 premiers cas.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 hello]$ </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">18</span><span class="w"> </span>table.dat<span class="w"> </span>&gt;<span class="w"> </span>subset.dat
+<span class="gp">[alice@narval3 hello]$ </span>mv<span class="w"> </span>subset.dat<span class="w"> </span>table.dat
+</pre></div>
+</div>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">job_script.sh</span></code> contient les instructions <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> qui seront
+appliquées à chacune des <span class="math notranslate nohighlight">\(N\)</span> tâches soumises à l’ordonnanceur. Ce fichier
+doit être édité pour indiquer au moins le temps nécessaire et le compte à
+utiliser. Si vos cas utilisent un programme parallèle ou un GPU, demandez les
+ressources nécessaires dans ce fichier. Cet exemple utilise un programme
+séquentiel (<code class="docutils literal notranslate"><span class="pre">sleep</span></code>) qui ne demande aucune ressource particulière.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>!/bin/bash
+
+<span class="gp">#</span>SBATCH<span class="w"> </span>--time<span class="o">=</span><span class="m">01</span>:00:00
+<span class="gp">#</span>SBATCH<span class="w"> </span>--account<span class="o">=</span>def-sponsor
+
+<span class="gp"># </span>Don’t<span class="w"> </span>change<span class="w"> </span>the<span class="w"> </span>lines<span class="w"> </span><span class="nv">below</span>
+<span class="gp">#</span><span class="o">=================================================================</span>
+<span class="go">[...]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’option <code class="docutils literal notranslate"><span class="pre">--time</span></code> dans le fichier <code class="docutils literal notranslate"><span class="pre">job_script.sh</span></code> doit être réglée en
+fonction du temps nécessaire pour tous les cas qui seront traités par une
+tâche et non en fonction du temps nécessaire pour un seul cas. Ce temps
+<span class="math notranslate nohighlight">\(t\)</span> doit être calculé en fonction du nombre total de cas (<span class="math notranslate nohighlight">\(M\)</span>),
+du temps moyen nécessaire pour un cas (<span class="math notranslate nohighlight">\(\bar{t_i}\)</span>) et du nombre de
+tâches (<span class="math notranslate nohighlight">\(N\)</span>) choisi :</p>
+<div class="math notranslate nohighlight">
+\[t = \frac{M \, \bar{t_i}}{N}\]</div>
+</div>
+</section>
+<section id="soumettre-les-taches">
+<h4>4. Soumettre les tâches<a class="headerlink" href="#soumettre-les-taches" title="Lien vers cette rubrique">#</a></h4>
+<p>Le nombre <span class="math notranslate nohighlight">\(N\)</span> de tâches est donné à la commande META <code class="docutils literal notranslate"><span class="pre">submit.run</span></code>, qui
+soumet ces tâches à l’ordonnanceur.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 hello]$ </span>submit.run<span class="w"> </span><span class="m">2</span>
+<span class="go">Submitting 18 cases from table.dat as 2 jobs using META mode</span>
+
+<span class="go">Submitting the farm as an Array Job</span>
+
+<span class="go">Success!</span>
+<span class="gp">[alice@narval3 hello]$ </span>sq
+<span class="go">          JOBID     USER      ACCOUNT           NAME  ST  TIME_LEFT NODES CPUS TRES_PER_N MIN_MEM NODELIST (REASON)</span>
+<span class="go">     41169148_1    alice  def-sponsor          hello   R      59:10     1    1        N/A      4G nc31004 (None)</span>
+<span class="go">     41169148_2    alice  def-sponsor          hello   R      59:10     1    1        N/A      4G nc31004 (None)</span>
+</pre></div>
+</div>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">table.dat</span></code> est modifié lorsque les tâches sont soumises, afin
+d’assigner un indice à chaque cas :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 hello]$ </span>head<span class="w"> </span>table.dat
+<span class="go">1 sleep 26</span>
+<span class="go">2 sleep 26</span>
+<span class="go">3 sleep 28</span>
+<span class="go">4 sleep 30</span>
+<span class="go">5 sleep 29</span>
+<span class="go">6 sleep 25</span>
+<span class="go">7 sleep 25</span>
+<span class="go">8 sleep 28</span>
+<span class="go">9 sleep 27</span>
+<span class="go">10 sleep 29</span>
+</pre></div>
+</div>
+</section>
+<section id="consulter-les-resultats">
+<h4>5. Consulter les résultats<a class="headerlink" href="#consulter-les-resultats" title="Lien vers cette rubrique">#</a></h4>
+<p>À chaque cas correspond un répertoire <code class="docutils literal notranslate"><span class="pre">RUN*</span></code>. (Dans cet exemple, les
+répertoires sont vides car le programme <code class="docutils literal notranslate"><span class="pre">sleep</span></code> ne génère aucun résultat.) Les
+fichiers de sortie des tâches Slurm elles-mêmes sont dans <code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code>. Enfin, les
+fichiers dans <code class="docutils literal notranslate"><span class="pre">STATUSES</span></code> donnent le code de sortie rapporté pour chaque cas ;
+cela permet d’identifier d’éventuels cas ayant échoué et de les resoumettre.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval3 hello]$ </span>ls
+<span class="go">config.h       resubmit_script.sh  RUN12  RUN16  RUN3  RUN7            STATUSES</span>
+<span class="go">job_script.sh  RUN1                RUN13  RUN17  RUN4  RUN8            table.dat</span>
+<span class="go">MISC           RUN10               RUN14  RUN18  RUN5  RUN9            TMP</span>
+<span class="go">OUTPUT         RUN11               RUN15  RUN2   RUN6  single_case.sh</span>
+<span class="gp">[alice@narval3 hello]$ </span>ls<span class="w"> </span>OUTPUT/
+<span class="go">slurm-41169148.out  slurm-41169153.out</span>
+<span class="gp">[alice@narval3 hello]$ </span>ls<span class="w"> </span>STATUSES/
+<span class="go">status.41169148_1  status.41169148_2</span>
+<span class="gp">[ofisette@narval3 hello]$ </span>cat<span class="w"> </span>STATUSES/status.41169148_1
+<span class="go">1 0</span>
+<span class="go">3 0</span>
+<span class="go">6 0</span>
+<span class="go">8 0</span>
+<span class="go">10 0</span>
+<span class="go">12 0</span>
+<span class="go">14 0</span>
+<span class="go">15 0</span>
+<span class="go">18 0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pour-en-savoir-plus">
+<h3>Pour en savoir plus<a class="headerlink" href="#pour-en-savoir-plus" title="Lien vers cette rubrique">#</a></h3>
+<ul class="simple">
+<li><p>Documentation technique de l’Alliance : <a class="reference external" href="https://docs.alliancecan.ca/wiki/META-Farm/fr">META-Farm</a></p></li>
+<li><p>Webinaire : <a class="reference external" href="https://www.youtube.com/watch?v=GcYbaPClwGE">META: running a large number of jobs conveniently</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="gnu_parallel.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">GNU Parallel</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glost">GLOST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meta-farm">META-Farm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Démonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charger-le-module-logiciel">1. Charger le module logiciel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creer-un-groupe-de-cas">2. Créer un groupe de cas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configurer-les-cas-et-les-taches">3. Configurer les cas et les tâches</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soumettre-les-taches">4. Soumettre les tâches</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#consulter-les-resultats">5. Consulter les résultats</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-en-savoir-plus">Pour en savoir plus</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

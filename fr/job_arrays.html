@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Vecteurs de tâches &#8212; CIP202</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'job_arrays';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="GNU Parallel" href="gnu_parallel.html" />
+    <link rel="prev" title="Généralités" href="introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Gestion de grands lots de tâches (CIP202)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallélisme de données</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Généralités</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vecteurs de tâches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gnu_parallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other_tools.html">Autres outils</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Liens externes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">Documentation technique de l’Alliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/services-aux-chercheurs/formation/">Formations de Calcul Québec</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/job_arrays.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Thème" data-bs-title="Thème"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Clair"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Sombre"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Paramètres système"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vecteurs de tâches</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-bases">Les bases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pourquoi-utiliser-un-vecteur">Pourquoi utiliser un vecteur ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utiliser-les-vecteurs">Utiliser les vecteurs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-complexes">Vecteurs complexes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-de-taches-paralleles">Vecteurs de tâches parallèles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-2d">Vecteurs 2D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-n-dimensionnels">Vecteurs n-dimensionnels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-en-savoir-plus">Pour en savoir plus</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="vecteurs-de-taches">
+<h1>Vecteurs de tâches<a class="headerlink" href="#vecteurs-de-taches" title="Lien vers cette rubrique">#</a></h1>
+<p><a class="reference external" href="../en/job_arrays.html">English</a></p>
+<p>Les <a class="reference external" href="https://docs.alliancecan.ca/wiki/Job_arrays/fr">vecteurs de tâches</a> sont
+une fonctionnalité de l’ordonnanceur Slurm. Ils permettent d’utiliser le même
+script pour soumettre plusieurs tâches avec une seule commande.</p>
+<p>Les vecteurs sont l’outil idéal lorsque :</p>
+<ul class="simple">
+<li><p>Vous avez plusieurs tâches similaires à soumettre.</p></li>
+<li><p>Celles-ci ne sont pas trop courtes (au moins une heure de temps demandé).</p></li>
+<li><p>Leur nombre n’excède pas un millier.</p></li>
+</ul>
+<p>Pour les tâches plus courtes ou plus nombreuses, l’outil <a class="reference internal" href="gnu_parallel.html"><span class="doc">GNU Parallel</span></a>
+devrait plutôt être utilisé.</p>
+<section id="les-bases">
+<h2>Les bases<a class="headerlink" href="#les-bases" title="Lien vers cette rubrique">#</a></h2>
+<p>Le script <code class="docutils literal notranslate"><span class="pre">hello-job.sh</span></code> suivant est un exemple minimal d’un vecteur de
+tâches :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=hello</span>
+<span class="hll"><span class="c1">#SBATCH --array=1-10</span>
+</span>
+<span class="hll"><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from index </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="s2">&quot;</span>
+</span>
+sleep<span class="w"> </span><span class="m">60</span>
+</pre></div>
+</div>
+<p>Un script pour un vecteur de tâches contient l’option <code class="docutils literal notranslate"><span class="pre">--array</span></code>, qui spécifie
+les répétitions de la tâche et assigne à chacune une valeur entière unique, ici
+de 1 à 10. Cet indice est accessible avec <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code>.</p>
+<p>Ce script peut être soumis comme n’importe quel autre :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 hello-array]$ </span>sbatch<span class="w"> </span>hello-job.sh
+<span class="go">Submitted batch job 40912550</span>
+</pre></div>
+</div>
+<p>Toutefois, cette commande crée 10 tâches dans l’ordonnanceur plutôt qu’une
+seule :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 hello-array]$ </span>sq
+<span class="go">          JOBID     USER      ACCOUNT           NAME  ST  TIME_LEFT NODES CPUS TRES_PER_N MIN_MEM NODELIST (REASON)</span>
+<span class="go">40912550_[4-10]    alice  def-sponsor my-first-array  PD    1:00:00     1    1        N/A    256M          (Priority)</span>
+<span class="go">     40912550_1    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None)</span>
+<span class="go">     40912550_2    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None)</span>
+<span class="go">     40912550_3    alice  def-sponsor my-first-array   R      59:57     1    1        N/A    256M nc10914  (None)</span>
+</pre></div>
+</div>
+<p>Chaque tâche est identifiée par son indice et est indépendante des autres.
+Ainsi, certaines tâches peuvent démarrer tandis que d’autres attendent dans la
+file.</p>
+<p>Chaque tâche a son propre fichier de sortie, à nouveau identifié par son
+indice :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 hello-array]$ </span>ls<span class="w"> </span>slurm-*.out
+<span class="go">slurm-40912550_1.out  slurm-40912550_2.out  slurm-40912550_3.out</span>
+<span class="gp">[alice@narval1 hello-array]$ </span>grep<span class="w"> </span>Hello<span class="w"> </span>slurm-*.out
+<span class="go">slurm-40912550_1.out:Hello from index 1</span>
+<span class="go">slurm-40912550_2.out:Hello from index 2</span>
+<span class="go">slurm-40912550_3.out:Hello from index 3</span>
+</pre></div>
+</div>
+<p>On peut annuler une des tâches du vecteur avec son indice :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>scancel<span class="w"> </span>40912550_5
+</pre></div>
+</div>
+<p>Ou un sous-ensemble des tâches :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>scancel<span class="w"> </span>40912550_<span class="o">[</span><span class="m">6</span>-10<span class="o">]</span>
+</pre></div>
+</div>
+<p>Ou encore toutes les tâches du vecteur :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>scancel<span class="w"> </span><span class="m">40912550</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Malgré son nom, la variable <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> n’a rien à voir avec les
+options de parallélisme telles que <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> ou <code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code>.
+Elle réfère uniquement à l’indice d’une tâche de calcul dans un vecteur.</p>
+</div>
+<section id="exercice">
+<h3>Exercice<a class="headerlink" href="#exercice" title="Lien vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Connectez-vous à la grappe virtuelle avec <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">login1</span></code>.</p></li>
+<li><p>Allez dans le répertoire contenant le script montré ci-haut : <code class="docutils literal notranslate"><span class="pre">cd</span>
+<span class="pre">~/cq-formation-cip202-main/lab/hello-array</span></code>.</p></li>
+<li><p>Affichez le contenu du script avec <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">hello-job.sh</span></code>.</p></li>
+<li><p>Soumettez le script avec <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> et suivez les tâches avec <code class="docutils literal notranslate"><span class="pre">sq</span></code>.</p></li>
+<li><p>Quand toutes les tâches sont terminées, affichez les fichiers de sortie avec
+<code class="docutils literal notranslate"><span class="pre">ls</span></code> et <code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p></li>
+</ol>
+</section>
+<section id="pourquoi-utiliser-un-vecteur">
+<h3>Pourquoi utiliser un vecteur ?<a class="headerlink" href="#pourquoi-utiliser-un-vecteur" title="Lien vers cette rubrique">#</a></h3>
+<p>Plutôt que d’utiliser un vecteur, il serait possible de soumettre, manuellement
+ou à l’aide d’une boucle automatisée, des dizaines ou des centaines de scripts
+de tâches. Cette approche est à proscrire :</p>
+<ul class="simple">
+<li><p>Des appels rapides et répétés à <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> surchargent l’ordonnanceur.</p></li>
+<li><p>Maintenir de nombreuses copies de votre script de tâche est plus compliqué et
+source d’erreurs.</p></li>
+</ul>
+</section>
+</section>
+<section id="utiliser-les-vecteurs">
+<h2>Utiliser les vecteurs<a class="headerlink" href="#utiliser-les-vecteurs" title="Lien vers cette rubrique">#</a></h2>
+<p>Les indices des tâches à soumettre peuvent être contrôlés avec précision. Voici
+quelques exemples :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=0-10</span></code> : De 0 à 10 (11 tâches au total)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=1-9:2</span></code> : 1, 3, 5, 7, 9 (un pas de 2)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=1,2,5</span></code> : 1, 2, 5</p></li>
+</ul>
+<p>La syntaxe du dernier exemple est particulièrement utile pour re-soumettre une
+ou plusieurs tâches ayant échoué. Pour ce faire, <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--array</span></code> peut être
+utilisé plutôt que de modifier le script de tâche :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">1</span>,2,5<span class="w"> </span>job.sh
+</pre></div>
+</div>
+<p>Finalement, il est possible de limiter le nombre de tâches pouvant être
+actives simultanément :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--array=1-1000%10</span></code> : Au plus 10 tâches peuvent être actives simultanément.</p></li>
+</ul>
+<p>Cela est utile pour limiter le débit de vos tâches afin d’éviter que les autres
+membres de votre groupe de recherche ne voient la priorité de leurs tâches
+sévèrement diminuée si vous soumettez un grand nombre de tâches. Si vos tâches
+utilisent intensivement le stockage réseau, limiter le nombre de tâches actives
+évite aussi de causer des problèmes d’entrée-sortie.</p>
+<p>La variable <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> donne l’indice associé à une tâche. Elle est
+utilisée dans le script afin de distinguer les tâches. On l’utilise pour :</p>
+<ul class="simple">
+<li><p>Choisir un jeu de données d’entrée (e.g. molécule 1, 2, 3…).</p></li>
+<li><p>Déterminer la valeur d’un paramètre à tester.</p></li>
+<li><p>Numéroter un fichier de sortie.</p></li>
+</ul>
+<p>Par exemple, si vous aviez des fichiers d’entrée nommés <code class="docutils literal notranslate"><span class="pre">mol-1.pdb</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mol-2.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">mol-3.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>, vous pourriez y faire référence dans
+votre script avec :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./prog<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;mol-</span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="s2">.pdb&quot;</span>
+</pre></div>
+</div>
+<p>La longueur de la variable <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> peut rendre le script de
+tâche difficile à lire, particulièrement lorsque la variable est utilisée
+plusieurs fois. Pour cette raison, il est fréquent de créer un alias court pour
+<code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">i</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+./prog<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;mol-</span><span class="nv">$i</span><span class="s2">.pdb&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;stats-</span><span class="nv">$i</span><span class="s2">.dat&quot;</span>
+</pre></div>
+</div>
+<p>Il est fréquent d’avoir des fichiers nommés avec des zéros non significatifs,
+par exemple <code class="docutils literal notranslate"><span class="pre">mol-001.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>, <code class="docutils literal notranslate"><span class="pre">mol-099.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">mol-100.pdb</span></code>. L’indice
+de la tâche doit alors être converti en une chaîne de caractères remplie avec
+des zéros :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">i</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span><span class="w"> </span>%03d<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="k">)</span>
+
+./prog<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;mol-</span><span class="nv">$i</span><span class="s2">.pdb&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;stats-</span><span class="nv">$i</span><span class="s2">.dat&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">printf</span></code> affiche une ou plusieurs valeurs selon un <em>format</em>, ici
+<code class="docutils literal notranslate"><span class="pre">%03d</span></code> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%</span></code> : Débute le formattage d’une valeur</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> : Remplit avec des zéros non significatifs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> : Produit une chaîne de trois caractères</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> : Interprète la valeur comme un nombre entier</p></li>
+</ul>
+<p>La syntaxe <code class="docutils literal notranslate"><span class="pre">$(cmd)</span></code>, pour sa part, est une <em>substitution de commande</em>.
+Ici, la sortie de <code class="docutils literal notranslate"><span class="pre">cmd</span></code> est utilisée pour définir la valeur de <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
+</div>
+<section id="id2">
+<h3>Exercice<a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Objectifs</strong></p>
+<ul class="simple">
+<li><p>Convertir un script de tâche standard en un script pour un vecteur de tâches.</p></li>
+<li><p>Soumettre un vecteur de tâches qui produit dix fichiers numérotés.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Familiarisez-vous avec le script de tâche initial qui produit un fichier
+contenant des nombres aléatoires tirés d’une distribution normale.</p>
+<ol class="arabic simple">
+<li><p>Allez dans le répertoire de l’exercice avec
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/cq-formation-cip202-main/lab/dist-array</span></code>.</p></li>
+<li><p>Affichez le script de tâche avec <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">dist-job-single.sh</span></code>.</p></li>
+<li><p>Soumettez le script avec <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">dist-job-single.sh</span></code>.</p></li>
+<li><p>Une fois la tâche terminée, vérifiez que le fichier de sortie a bien été
+créé avec <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">results</span></code>.</p></li>
+</ol>
+</li>
+<li><p>Modifiez le script pour en faire un vecteur de tâches.</p>
+<ol class="arabic simple">
+<li><p>Copiez-le sous un autre nom : <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">dist-job-single.sh</span> <span class="pre">dist-job-array.sh</span></code>.</p></li>
+<li><p>Éditez le nouveau script avec <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">dist-job-array.sh</span></code>.</p></li>
+<li><p>Ajoutez l’option <code class="docutils literal notranslate"><span class="pre">--array</span></code> pour créer un vecteur de 10 tâches.</p></li>
+<li><p>Utilisez <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code> pour contrôler le nom du fichier de
+sortie.</p></li>
+<li><p>Optionnellement, utilisez <code class="docutils literal notranslate"><span class="pre">printf</span></code> pour produire des fichiers de sortie
+dont les noms ont tous le même nombre de caractères.</p></li>
+</ol>
+</li>
+<li><p>Soumettez le script avec <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p></li>
+<li><p>Une fois les tâches terminées, vérifiez que les dix fichiers de sortie ont
+bien été créés.</p></li>
+</ol>
+<p><strong>Solution</strong></p>
+<ul class="simple">
+<li><p>Comparez votre script avec <code class="docutils literal notranslate"><span class="pre">solution/dist-job-array.sh</span></code>.</p></li>
+<li><p>La version <code class="docutils literal notranslate"><span class="pre">solution/dist-job-array-padded.sh</span></code> ajoute des zéros non
+significatifs.</p></li>
+</ul>
+</section>
+</section>
+<section id="vecteurs-complexes">
+<h2>Vecteurs complexes<a class="headerlink" href="#vecteurs-complexes" title="Lien vers cette rubrique">#</a></h2>
+<section id="vecteurs-de-taches-paralleles">
+<h3>Vecteurs de tâches parallèles<a class="headerlink" href="#vecteurs-de-taches-paralleles" title="Lien vers cette rubrique">#</a></h3>
+<p>Les vecteurs de tâches que nous avons vus jusqu’à maintenant répétaient tous une
+tâche séquentielle. Toutefois, n’importe quelle tâche peut être répétée au moyen
+d’un vecteur, incluant les tâches parallèles.</p>
+<p>Les ressources (temps, mémoire, cœurs CPU) demandées quand on soumet un vecteur
+s’appliquent à chaque tâche et non globalement. Par exemple, pour exécuter un
+programme MPI 10 fois avec 8 cœurs CPU sur 1 nœud de calcul chaque fois, le
+script suivant demande 8 cœurs et non 80 :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=param-sweep</span>
+<span class="hll"><span class="c1">#SBATCH --nodes=1</span>
+</span><span class="hll"><span class="c1">#SBATCH --ntasks-per-node=8</span>
+</span><span class="c1">#SBATCH --mem-per-cpu=2G</span>
+<span class="c1">#SBATCH --time=6:00:00</span>
+<span class="hll"><span class="c1">#SBATCH --array=1-10</span>
+</span>
+srun<span class="w"> </span>./prog<span class="w"> </span>--param<span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</pre></div>
+</div>
+</section>
+<section id="vecteurs-2d">
+<h3>Vecteurs 2D<a class="headerlink" href="#vecteurs-2d" title="Lien vers cette rubrique">#</a></h3>
+<p>Il arrive parfois que l’on souhaite varier plus d’un paramètre dans un vecteur
+de tâches. Par exemple, si vous étudiez 8 médicaments potentiels et 4 récepteurs
+protéiques, vous pourriez vouloir tester les 32 combinaisons
+médicament/récepteur possibles. Toutefois, Slurm ne permet pas de définir de
+multiples variables avec l’option <code class="docutils literal notranslate"><span class="pre">--array</span></code> ; on ne peut que donner une
+séquence d’indices. Que faire ?</p>
+<p>Il existe plusieurs solutions possibles à ce problème, mais toutes utilisent la
+même stratégie : convertir un indice linéaire <span class="math notranslate nohighlight">\(i\)</span> en une paire d’indices
+<span class="math notranslate nohighlight">\((x,y)\)</span>. Donnons au médicament l’indice <span class="math notranslate nohighlight">\(x \in [0..7]\)</span> et au
+récepteur l’indice <span class="math notranslate nohighlight">\(y \in [0..3]\)</span> ; l’indice linéaire, pour sa part, sera
+<span class="math notranslate nohighlight">\(i \in [0..31]\)</span> :</p>
+<figure class="align-default">
+<img alt="_images/job-array-2d.svg" src="_images/job-array-2d.svg" />
+</figure>
+<p>Pour convertir <span class="math notranslate nohighlight">\(i → (x,y)\)</span>, on utilise la division entière,
+<span class="math notranslate nohighlight">\(\text{div}\)</span>, et le reste (ou modulo), <span class="math notranslate nohighlight">\(\text{mod}\)</span>. Ces conversions
+peuvent être faites dans le script de tâche :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --array=0-31</span>
+
+<span class="nv">i</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+<span class="hll"><span class="nv">x</span><span class="o">=</span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">8</span><span class="k">))</span><span class="w">  </span><span class="c1"># mod</span>
+</span><span class="hll"><span class="nv">y</span><span class="o">=</span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">8</span><span class="k">))</span><span class="w">  </span><span class="c1"># div</span>
+</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing drug candidate </span><span class="nv">$x</span><span class="s2"> vs receptor </span><span class="nv">$y</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La syntaxe <code class="docutils literal notranslate"><span class="pre">$((expr))</span></code> est une <em>expansion arithmétique</em>, qui permet
+d’effectuer des calculs simples (limités aux entiers).</p>
+</div>
+</section>
+<section id="vecteurs-n-dimensionnels">
+<h3>Vecteurs n-dimensionnels<a class="headerlink" href="#vecteurs-n-dimensionnels" title="Lien vers cette rubrique">#</a></h3>
+<p>Lorsque le nombre de paramètres à traiter dépasse deux, convertir l’indice
+linéaire <span class="math notranslate nohighlight">\(i\)</span> en indices multidimensionnels avec des divisions entières et
+le modulo devient fastidieux. Il existe une alternative simple : créer un
+fichier contenant toutes les combinaisons de paramètres à traiter, une
+combinaison par ligne. Le numéro de ligne dans le fichier devient l’indice
+linéaire <span class="math notranslate nohighlight">\(i\)</span>. Pour convertir <span class="math notranslate nohighlight">\(i → (x,y,z,...)\)</span>, il suffit de lire
+les valeurs à la ligne correspondante.</p>
+<p>Par exemple, supposons que vous simulez la stabilité de deux protéines à trois
+températures différentes avec et sans un agent stabilisant. Un fichier
+<code class="docutils literal notranslate"><span class="pre">params.txt</span></code> contenant les 12 combinaisons possibles de ces paramètres peut
+être créé avec le script <code class="docutils literal notranslate"><span class="pre">make-params.sh</span></code> suivant :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">proteins</span><span class="o">=</span><span class="s2">&quot;A B&quot;</span>
+<span class="nv">temperatures</span><span class="o">=</span><span class="s2">&quot;30 37 44&quot;</span>
+
+rm<span class="w"> </span>-f<span class="w"> </span>params.txt
+
+<span class="k">for</span><span class="w"> </span>prot<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$proteins</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>temp<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$temperatures</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span>agent<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span>false<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$prot</span><span class="w"> </span><span class="nv">$temp</span><span class="w"> </span><span class="nv">$agent</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>params.txt
+<span class="w">        </span><span class="k">done</span>
+<span class="w">    </span><span class="k">done</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[alice@narval1 ~]$ </span>bash<span class="w"> </span>make-params.sh
+<span class="gp">[alice@narval1 ~]$ </span>cat<span class="w"> </span>params.txt
+<span class="go">A 30 true</span>
+<span class="go">A 30 false</span>
+<span class="go">A 37 true</span>
+<span class="go">A 37 false</span>
+<span class="go">A 44 true</span>
+<span class="go">A 44 false</span>
+<span class="go">B 30 true</span>
+<span class="go">B 30 false</span>
+<span class="go">B 37 true</span>
+<span class="go">B 37 false</span>
+<span class="go">B 44 true</span>
+<span class="go">B 44 false</span>
+</pre></div>
+</div>
+<p>Le script du vecteur de tâches lit une ligne de ce fichier :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --array=1-12</span>
+
+<span class="nv">i</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+<span class="hll"><span class="nb">read</span><span class="w"> </span>prot<span class="w"> </span>temp<span class="w"> </span>agent<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="k">$(</span>sed<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">q;d&quot;</span><span class="w"> </span>params.txt<span class="k">)</span>
+</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Loading structure for protein </span><span class="nv">$prot</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Setting temperature to </span><span class="nv">$temp</span><span class="s2"> degrees&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="nv">$agent</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Adding stabilizing agent&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La commande <code class="docutils literal notranslate"><span class="pre">sed</span></code> (<em>stream editor</em>) est un outil de manipulation de texte.
+Elle est utilisée ici pour lire la ligne <code class="docutils literal notranslate"><span class="pre">${i}</span></code> du fichier de paramètres.
+La syntaxe <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span></code> est une chaîne en ligne (<em>here string</em>) : la sortie de
+<code class="docutils literal notranslate"><span class="pre">sed</span></code> est redirigée vers la commande <code class="docutils literal notranslate"><span class="pre">read</span></code>, qui assigne les valeurs aux
+variables <code class="docutils literal notranslate"><span class="pre">prot</span></code>, <code class="docutils literal notranslate"><span class="pre">temp</span></code> et <code class="docutils literal notranslate"><span class="pre">agent</span></code>.</p>
+<p>Un tube tel que <code class="docutils literal notranslate"><span class="pre">sed</span> <span class="pre">[...]</span> <span class="pre">|</span> <span class="pre">read</span> <span class="pre">[...]</span></code> ne pourrait être utilisé ici car
+les tubes sont exécutés dans un sous-processus qui n’a pas accès aux
+variables du processus parent, soit celui qui exécute le script. Les valeurs
+lues seraient alors immédiatement perdues.</p>
+</div>
+<p>En plus d’être simple, cette approche des vecteurs de tâches multidimensionnels
+est flexible :</p>
+<ul class="simple">
+<li><p>Elle fonctionne peu importe le nombre de paramètres.</p></li>
+<li><p>Le nombre de paramètres peut être changé aisément.</p></li>
+<li><p>N’importe quelles combinaisons de paramètres peuvent être choisies.</p>
+<ul>
+<li><p>Cela permet, entre autres, d’éviter de traiter des combinaisons que l’on
+sait impossibles. Par exemple, si vous simulez un modèle avec différentes
+combinaisons de température et de niveau d’humidité mais que vous ne vous
+intéressez qu’aux conditions au-dessus du point de rosée, vous pouvez
+éliminer à l’avance les combinaisons température/humidité que vous savez
+être en dessous de ce point, simplement en ne les ajoutant pas à votre
+fichier de paramètres.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="pour-en-savoir-plus">
+<h2>Pour en savoir plus<a class="headerlink" href="#pour-en-savoir-plus" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p>Documentation technique de l’Alliance : <a class="reference external" href="https://docs.alliancecan.ca/wiki/Job_arrays/fr">Vecteurs de tâches</a></p></li>
+<li><p>Documentation de Slurm : <a class="reference external" href="https://slurm.schedmd.com/job_array.html">Job Array Support</a></p></li>
+<li><p>Webinaire : <a class="reference external" href="https://raw.githubusercontent.com/WestGrid/trainingMaterials/gh-pages/materials/gmxtools.pdf">Automating the GROMACS analysis tools on HPC systems</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introduction.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Généralités</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gnu_parallel.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">GNU Parallel</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-bases">Les bases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice">Exercice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pourquoi-utiliser-un-vecteur">Pourquoi utiliser un vecteur ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utiliser-les-vecteurs">Utiliser les vecteurs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-complexes">Vecteurs complexes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-de-taches-paralleles">Vecteurs de tâches parallèles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-2d">Vecteurs 2D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vecteurs-n-dimensionnels">Vecteurs n-dimensionnels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-en-savoir-plus">Pour en savoir plus</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

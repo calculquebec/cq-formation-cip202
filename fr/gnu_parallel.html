@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GNU Parallel &#8212; CIP202</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gnu_parallel';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Autres outils" href="other_tools.html" />
+    <link rel="prev" title="Vecteurs de tâches" href="job_arrays.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Gestion de grands lots de tâches (CIP202)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallélisme de données</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Généralités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_arrays.html">Vecteurs de tâches</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other_tools.html">Autres outils</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Liens externes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.alliancecan.ca/wiki/Technical_documentation/fr">Documentation technique de l’Alliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.calculquebec.ca/services-aux-chercheurs/formation/">Formations de Calcul Québec</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/gnu_parallel.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Thème" data-bs-title="Thème"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Clair"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Sombre"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Paramètres système"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GNU Parallel</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pourquoi-pas-slurm">Pourquoi pas Slurm?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxe-de-la-commande-gnu-parallel">Syntaxe de la commande GNU Parallel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#une-seule-liste-de-valeurs">Une seule liste de valeurs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-preparer-des-sequences-dadn">Exercice - Préparer des séquences d’ADN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaisons-de-parametres">Combinaisons de paramètres</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-aligner-des-sequences-dadn">Exercice - Aligner des séquences d’ADN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelisme-multi-fils-imbrique">Parallélisme multi-fils imbriqué</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-en-savoir-plus">Pour en savoir plus</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="gnu-parallel">
+<h1>GNU Parallel<a class="headerlink" href="#gnu-parallel" title="Lien vers cette rubrique">#</a></h1>
+<p><a class="reference external" href="../en/gnu_parallel.html">English</a></p>
+<p>Si votre projet de recherche implique de faire des balayages de paramètres avec
+de courts processus (de 50 minutes et moins), une multitude de tâches Slurm
+n’est probablement <a class="reference external" href="#pourquoi-pas-slurm">pas la meilleure solution</a>. En fait,
+devoir gérer de multiples combinaisons de paramètres est un défi en soi. Et
+c’est là que <a class="reference external" href="https://docs.alliancecan.ca/wiki/GNU_Parallel/fr">GNU Parallel</a>
+devient l’outil tout désigné.</p>
+<p>GNU Parallel s’utilise via la commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code> qui permet d’utiliser
+pleinement les ressources locales d’un nœud de calcul, et ce, en gérant
+l’exécution d’une <strong>longue liste de tâches de petite taille</strong>. C’est un peu
+comme l’ordonnanceur Slurm, mais à plus petite échelle et en gérant des
+processus au lieu de scripts de tâche.</p>
+<figure class="align-default">
+<img alt="_images/gnu-parallel_fr.svg" src="_images/gnu-parallel_fr.svg" />
+</figure>
+<section id="pourquoi-pas-slurm">
+<h2>Pourquoi pas Slurm?<a class="headerlink" href="#pourquoi-pas-slurm" title="Lien vers cette rubrique">#</a></h2>
+<p>OK, mais pourquoi ne pas tout simplement soumettre <strong>des centaines de tâches à
+Slurm</strong>?</p>
+<ul class="simple">
+<li><p>À tout moment, Slurm <strong>limite chaque usager à 1000 tâches</strong> au total dans
+<code class="docutils literal notranslate"><span class="pre">squeue</span></code> (<em>pending</em> + <em>running</em>).</p></li>
+<li><p>Certains calculs sont tellement <strong>courts (moins de 5 minutes)</strong> que le
+démarrage et la fin de la tâche comptent pour un pourcentage significatif du
+temps réel utilisé, ce qui diminue l’efficacité CPU de ces tâches.</p></li>
+</ul>
+<p>Les avantages de GNU Parallel à considérer :</p>
+<ul class="simple">
+<li><p>Nous <strong>évite d’utiliser une boucle</strong> soumettant des centaines de scripts
+similaires, ce qui, dans bien des cas, facilite l’exécution de centaines de
+cas de calcul semblables.</p></li>
+<li><p>Le nombre de <strong>processeurs disponibles limite</strong> automatiquement le nombre de
+cas de calcul exécutés en simultané.</p>
+<ul>
+<li><p>Dans le cas de calculs parallèles, c’est possible de spécifier le nombre de
+cas en simultané.</p></li>
+</ul>
+</li>
+<li><p>GNU Parallel peut <a class="reference external" href="https://docs.alliancecan.ca/wiki/GNU_Parallel/fr#Suivi_des_commandes_ex.C3.A9cut.C3.A9es_ou_des_commandes_ayant_.C3.A9chou.C3.A9.3B_fonctionnalit.C3.A9s_de_red.C3.A9marrage">reprendre la séquence des cas de calcul</a>
+lorsque la tâche Slurm est interrompue.</p></li>
+</ul>
+</section>
+<section id="syntaxe-de-la-commande-gnu-parallel">
+<h2>Syntaxe de la commande GNU Parallel<a class="headerlink" href="#syntaxe-de-la-commande-gnu-parallel" title="Lien vers cette rubrique">#</a></h2>
+<p>Les éléments de base de la commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>parallel<span class="w"> </span>&lt;options&gt;<span class="w"> </span>&lt;gabarit_de_commande&gt;<span class="w"> </span>:::<span class="w"> </span>&lt;liste<span class="w"> </span>de<span class="w"> </span>valeurs&gt;
+</pre></div>
+</div>
+<p>Voir la page de manuel pour les options (appuyez sur <kbd class="kbd docutils literal notranslate">q</kbd> pour quitter) :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>man<span class="w"> </span>parallel
+</pre></div>
+</div>
+</section>
+<section id="une-seule-liste-de-valeurs">
+<h2>Une seule liste de valeurs<a class="headerlink" href="#une-seule-liste-de-valeurs" title="Lien vers cette rubrique">#</a></h2>
+<p>Le paramètre changeant est donné via une paire d’<code class="docutils literal notranslate"><span class="pre">{}</span></code>. Par exemple :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>fichier<span class="o">{}</span>.txt<span class="w"> </span>:::<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+</span>Academic<span class="w"> </span>tradition<span class="w"> </span>requires<span class="w"> </span>you<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>works<span class="w"> </span>you<span class="w"> </span>base<span class="w"> </span>your<span class="w"> </span>article<span class="w"> </span>on.
+If<span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>programs<span class="w"> </span>that<span class="w"> </span>use<span class="w"> </span>GNU<span class="w"> </span>Parallel<span class="w"> </span>to<span class="w"> </span>process<span class="w"> </span>data<span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>article<span class="w"> </span><span class="k">in</span><span class="w"> </span>a
+scientific<span class="w"> </span>publication,<span class="w"> </span>please<span class="w"> </span>cite:
+
+...
+
+To<span class="w"> </span>silence<span class="w"> </span>this<span class="w"> </span>citation<span class="w"> </span>notice:<span class="w"> </span>run<span class="w"> </span><span class="s1">&#39;parallel --citation&#39;</span><span class="w"> </span>once.
+
+<span class="hll">fichier7.txt
+</span><span class="hll">fichier8.txt
+</span><span class="hll">fichier10.txt
+</span><span class="hll">fichier11.txt
+</span><span class="hll">fichier9.txt
+</span><span class="hll">fichier12.txt
+</span></pre></div>
+</div>
+<p>Tel que vu dans cet exemple, l’ordre d’affichage des résultats peut varier à
+cause de l’exécution des différents processus en simultané : leur durée peut
+varier et le système d’exploitation peut parfois favoriser légèrement certains
+processus.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour s’engager à citer les développeurs de GNU Parallel :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span>--citation
+</span>Academic<span class="w"> </span>tradition<span class="w"> </span>requires<span class="w"> </span>you<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>works<span class="w"> </span>you<span class="w"> </span>base<span class="w"> </span>your<span class="w"> </span>article<span class="w"> </span>on.
+If<span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>programs<span class="w"> </span>that<span class="w"> </span>use<span class="w"> </span>GNU<span class="w"> </span>Parallel<span class="w"> </span>to<span class="w"> </span>process<span class="w"> </span>data<span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>article<span class="w"> </span><span class="k">in</span><span class="w"> </span>a
+scientific<span class="w"> </span>publication,<span class="w"> </span>please<span class="w"> </span>cite:
+
+...
+
+Type:<span class="w"> </span><span class="s1">&#39;will cite&#39;</span><span class="w"> </span>and<span class="w"> </span>press<span class="w"> </span>enter.
+<span class="hll">&gt;<span class="w"> </span>will<span class="w"> </span>cite
+</span>
+...
+
+It<span class="w"> </span>is<span class="w"> </span>really<span class="w"> </span>appreciated.<span class="w"> </span>The<span class="w"> </span>citation<span class="w"> </span>notice<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>silenced.
+</pre></div>
+</div>
+</div>
+<p>On peut réécrire la première commande en utilisant l’<em>expansion des accolades</em>
+<code class="docutils literal notranslate"><span class="pre">{a..b}</span></code> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>fichier<span class="o">{}</span>.txt<span class="w"> </span>:::<span class="w"> </span><span class="o">{</span><span class="m">7</span>..12<span class="o">}</span>
+fichier7.txt
+fichier8.txt
+fichier9.txt
+fichier10.txt
+fichier11.txt
+fichier12.txt
+</pre></div>
+</div>
+<p>Si nécessaire, on peut ajouter des zéros non significatifs aux nombres plus
+courts :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>fichier<span class="o">{}</span>.txt<span class="w"> </span>:::<span class="w"> </span><span class="o">{</span><span class="m">07</span>..12<span class="o">}</span>
+fichier07.txt
+fichier08.txt
+fichier09.txt
+fichier10.txt
+fichier11.txt
+fichier12.txt
+</pre></div>
+</div>
+<p>Une même valeur peut être répétée dans le gabarit de commande :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="o">{}</span>.<span class="w"> </span>fichier<span class="o">{}</span>.txt<span class="w"> </span>:::<span class="w"> </span><span class="o">{</span><span class="m">07</span>..12<span class="o">}</span>
+<span class="m">07</span>.<span class="w"> </span>fichier07.txt
+<span class="m">08</span>.<span class="w"> </span>fichier08.txt
+<span class="m">09</span>.<span class="w"> </span>fichier09.txt
+<span class="m">10</span>.<span class="w"> </span>fichier10.txt
+<span class="m">11</span>.<span class="w"> </span>fichier11.txt
+<span class="m">12</span>.<span class="w"> </span>fichier12.txt
+</pre></div>
+</div>
+<p>Ensuite, si votre gabarit de commande doit contenir des caractères normalement
+interprétés par Bash, par exemple <code class="docutils literal notranslate"><span class="pre">$</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> et <code class="docutils literal notranslate"><span class="pre">;</span></code>, on peut
+mettre tout le gabarit de commande entre <code class="docutils literal notranslate"><span class="pre">''</span></code> pour que l’interprétation de
+ces caractères soit faite uniquement au moment où GNU Parallel exécutera les
+commandes en parallèle :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span><span class="s1">&#39;echo {}. &gt; $SCRATCH/fichier{}.txt&#39;</span><span class="w"> </span>:::<span class="w"> </span><span class="o">{</span><span class="m">07</span>..12<span class="o">}</span>
+<span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span><span class="nv">$SCRATCH</span>/fichier*.txt
+<span class="m">07</span>.
+<span class="m">08</span>.
+<span class="m">09</span>.
+<span class="m">10</span>.
+<span class="m">11</span>.
+<span class="m">12</span>.
+</pre></div>
+</div>
+<section id="exercice-preparer-des-sequences-dadn">
+<h3>Exercice - Préparer des séquences d’ADN<a class="headerlink" href="#exercice-preparer-des-sequences-dadn" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Objectifs</strong></p>
+<ul class="simple">
+<li><p>Transformer des boucles en des appels à la commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code>.</p></li>
+<li><p>Préparer le jeu de données : des séquences aléatoires d’ADN.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Allez dans le répertoire de l’exercice avec <code class="docutils literal notranslate"><span class="pre">cd</span>
+<span class="pre">~/cq-formation-cip202-main/lab/bio-info</span></code>.</p></li>
+<li><p>Éditez le fichier <code class="docutils literal notranslate"><span class="pre">gen-seq.sh</span></code> :</p>
+<ol class="arabic simple">
+<li><p>Demandez deux (2) cœurs CPU dans l’entête <code class="docutils literal notranslate"><span class="pre">SBATCH</span></code>.</p></li>
+<li><p>Transformez la commande <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">gen_spec.py</span> <span class="pre">...</span></code> de sorte à utiliser la
+commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code> plutôt que la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> :</p>
+<ol class="arabic simple">
+<li><p>Ajoutez <code class="docutils literal notranslate"><span class="pre">parallel</span></code> au début et enlevez l’indentation.</p></li>
+<li><p>Remplacez les deux itérateurs <code class="docutils literal notranslate"><span class="pre">$spec</span></code> par <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p></li>
+<li><p>Protégez le caractère <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> avec des guillemets, s’il y a lieu.</p></li>
+<li><p>Ajoutez <code class="docutils literal notranslate"><span class="pre">:::</span></code>, ainsi que les lettres de A à D, inclusivement.</p></li>
+</ol>
+</li>
+<li><p>Refaites les mêmes étapes pour la commande <code class="docutils literal notranslate"><span class="pre">makeblastdb</span> <span class="pre">...</span></code>.</p></li>
+<li><p>Refaites les mêmes étapes pour la commande <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">gen_test.py</span> <span class="pre">...</span></code>,
+mais avec les différences suivantes :</p>
+<ul class="simple">
+<li><p>Remplacez les deux itérateurs <code class="docutils literal notranslate"><span class="pre">$test</span></code> par <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p></li>
+<li><p>Fournissez les 16 lettres de K à Z, inclusivement.</p></li>
+</ul>
+</li>
+<li><p>Supprimez les lignes <code class="docutils literal notranslate"><span class="pre">for</span></code> et <code class="docutils literal notranslate"><span class="pre">done</span></code> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">K</kbd></kbd> dans <code class="docutils literal notranslate"><span class="pre">nano</span></code>).</p></li>
+</ol>
+</li>
+<li><p>Sauvegardez le script et soumettez-le à l’ordonnanceur.</p></li>
+<li><p>Une fois la tâche terminée, validez la présence des fichiers suivants :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">spec_A.fa</span></code> à <code class="docutils literal notranslate"><span class="pre">spec_D.fa</span></code>, inclusivement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spec_A.n*</span></code> à <code class="docutils literal notranslate"><span class="pre">spec_D.n*</span></code>, inclusivement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chr_K.fa</span></code> à <code class="docutils literal notranslate"><span class="pre">chr_Z.fa</span></code>, inclusivement.</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’encodage numérique de brins d’ADN se fait au moyen des quatre codes
+<code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code> et <code class="docutils literal notranslate"><span class="pre">T</span></code> qui correspondent aux quatre bases des
+molécules d’ADN. Bien qu’une séquence complète puisse contenir des millions
+de bases, les séquenceurs ne sont fiables que sur de courtes lectures.
+Ainsi, une collection de fichiers Fasta (<code class="docutils literal notranslate"><span class="pre">*.fa</span></code>) contient de nombreux
+morceaux d’ADN qui peuvent se chevaucher. Or, étant donné les nombreuses
+combinaisons possibles, en plus d’un certain taux d’erreurs dans les
+données, reconstruire une longue séquence d’ADN est tout un défi !</p>
+<p>Parfois, le problème est plus <em>simple</em>, c’est-à-dire qu’il suffit
+d’identifier à quelle espèce appartient le brin d’ADN. Dans ce cas, il
+suffit de tester les brins inconnus avec des bases de données de séquences
+connues. C’est essentiellement ce qui a été préparé dans cet exercice.</p>
+</div>
+</section>
+</section>
+<section id="combinaisons-de-parametres">
+<h2>Combinaisons de paramètres<a class="headerlink" href="#combinaisons-de-parametres" title="Lien vers cette rubrique">#</a></h2>
+<p>Pour cette partie, allez dans le répertoire des exemples avec :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/cq-formation-cip202-main/lab/gnu-parallel
+</pre></div>
+</div>
+<p><strong>a)</strong> Lorsqu’il y a <strong>plusieurs séquences de paramètres à combiner</strong>, on peut
+utiliser des paires d’accolades numérotées telles que <code class="docutils literal notranslate"><span class="pre">{1}</span></code>, <code class="docutils literal notranslate"><span class="pre">{2}</span></code>, etc. :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>fichier<span class="o">{</span><span class="m">1</span><span class="o">}{</span><span class="m">2</span><span class="o">}</span>.txt<span class="w"> </span>:::<span class="w"> </span><span class="o">{</span><span class="m">08</span>..10<span class="o">}</span><span class="w"> </span>:::<span class="w"> </span>a<span class="w"> </span>b
+fichier08a.txt
+fichier08b.txt
+fichier09a.txt
+fichier09b.txt
+fichier10a.txt
+fichier10b.txt
+</pre></div>
+</div>
+<p><strong>b)</strong> Dans le cas où on retrouve les <strong>combinaisons de paramètres dans un
+fichier texte</strong> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>param.txt
+<span class="m">3</span><span class="w"> </span><span class="m">4</span>
+<span class="m">3</span><span class="w"> </span><span class="m">6</span>
+<span class="m">3</span><span class="w"> </span><span class="m">8</span>
+<span class="m">5</span><span class="w"> </span><span class="m">4</span>
+<span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span>
+<span class="m">7</span><span class="w"> </span><span class="m">4</span>
+<span class="m">7</span><span class="w"> </span><span class="m">6</span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<p>La commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code> aura <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">'</span> <span class="pre">'</span></code> pour spécifier le séparateur de
+paramètres dans <code class="docutils literal notranslate"><span class="pre">param.txt</span></code>, ainsi que l’argument <code class="docutils literal notranslate"><span class="pre">::::</span></code> pour spécifier
+ensuite ce nom de fichier :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>exec-param.sh
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --mem=1000M</span>
+<span class="c1">#SBATCH --time=00:05:00</span>
+
+<span class="hll">parallel<span class="w"> </span>-C<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;$(({1}*{2})) &gt; prod_{1}x{2}&#39;</span><span class="w"> </span>::::<span class="w"> </span>param.txt
+</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;[0-9]+&#39;</span><span class="w"> </span>prod_*
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>exec-param.sh
+</pre></div>
+</div>
+<p><strong>c)</strong> Si on préfère valider la <strong>liste des commandes dans un fichier texte</strong>
+avant leur exécution sur un nœud de calcul :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>cmd.txt
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">3</span><span class="o">*</span><span class="m">4</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>prod_3x4
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">3</span><span class="o">*</span><span class="m">6</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>prod_3x6
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">5</span><span class="o">*</span><span class="m">4</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>prod_5x4
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">5</span><span class="o">*</span><span class="m">6</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>prod_5x6
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">5</span><span class="o">*</span><span class="m">8</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>prod_5x8
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">7</span><span class="o">*</span><span class="m">6</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>prod_7x6
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">7</span><span class="o">*</span><span class="m">8</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>prod_7x8
+</pre></div>
+</div>
+<p>Le script de tâche aura une commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code> simplifiée :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>exec-cmd.sh
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --mem=1000M</span>
+<span class="c1">#SBATCH --time=00:05:00</span>
+
+<span class="hll">parallel<span class="w"> </span>&lt;<span class="w"> </span>cmd.txt
+</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;[0-9]+&#39;</span><span class="w"> </span>prod_*
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>gnu-parallel<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>exec-cmd.sh
+</pre></div>
+</div>
+<section id="exercice-aligner-des-sequences-dadn">
+<h3>Exercice - Aligner des séquences d’ADN<a class="headerlink" href="#exercice-aligner-des-sequences-dadn" title="Lien vers cette rubrique">#</a></h3>
+<p>En ayant des séquences d’ADN de quatre espèces connues <code class="docutils literal notranslate"><span class="pre">{A,B,C,D}</span></code> et de 16
+espèces inconnues <code class="docutils literal notranslate"><span class="pre">{K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}</span></code>, on souhaite identifier
+les espèces inconnues en utilisant des outils du domaine de la bio-informatique
+pour comparer leur ADN à celle des espèces connues. La correspondance s’évalue
+à l’aide d’alignements de brins d’ADN. Par exemple, un alignement trouvé
+ressemble à ceci :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Query</span>  <span class="mi">1</span>    <span class="n">GTCTGTGTAATGCGCACCATCCGTGATATAATCGACGACGGCCTCCAAGAGACAAGGGCG</span>  <span class="mi">60</span>
+            <span class="o">|||||||||||||||||||||||||||||||</span>  <span class="o">||||||||||||||||||||||||</span> <span class="o">||</span>
+<span class="n">Sbjct</span>  <span class="mi">637</span>  <span class="n">GTCTGTGTAATGCGCACCATCCGTGATATAACTGACGACGGCCTCCAAGAGACAAGGCCG</span>  <span class="mi">696</span>
+
+<span class="n">Query</span>  <span class="mi">61</span>   <span class="n">GCCATAAGGCGTGCACTATCTCAAAGCTGGTAATGTGAAGAAACCTATAAAAAGAGTACA</span>  <span class="mi">120</span>
+            <span class="o">||||||||||||||||</span> <span class="o">||||||||||</span> <span class="o">|||</span> <span class="o">|||||||||||||||</span> <span class="o">||||||||||||</span>
+<span class="n">Sbjct</span>  <span class="mi">697</span>  <span class="n">GCCATAAGGCGTGCACAATCTCAAAGCAGGTCATGTGAAGAAACCTACAAAAAGAGTACA</span>  <span class="mi">756</span>
+</pre></div>
+</div>
+<p>En testant la correspondance de toutes les combinaisons <code class="docutils literal notranslate"><span class="pre">{A,B,C,D}</span></code> x
+<code class="docutils literal notranslate"><span class="pre">{K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}</span></code>, on obtient 64 combinaisons à tester.</p>
+<p><strong>Objectif</strong></p>
+<ul class="simple">
+<li><p>Utiliser deux listes de valeurs dans une commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code>.</p></li>
+</ul>
+<p><strong>Instructions</strong></p>
+<ol class="arabic simple">
+<li><p>Allez dans le répertoire de l’exercice avec <code class="docutils literal notranslate"><span class="pre">cd</span>
+<span class="pre">~/cq-formation-cip202-main/lab/bio-info</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Validez la présence des fichiers suivants :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">spec_A.fa</span></code> à <code class="docutils literal notranslate"><span class="pre">spec_D.fa</span></code>, inclusivement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spec_A.n*</span></code> à <code class="docutils literal notranslate"><span class="pre">spec_D.n*</span></code>, inclusivement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chr_K.fa</span></code> à <code class="docutils literal notranslate"><span class="pre">chr_Z.fa</span></code>, inclusivement.</p></li>
+</ul>
+</li>
+<li><p><strong>S’il en manque</strong>, soumettez le script suivant à l’ordonnanceur :
+<code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">solution/gen-seq.sh</span></code>.</p></li>
+</ol>
+</li>
+<li><p>Éditez le fichier <code class="docutils literal notranslate"><span class="pre">blastn-parallel.sh</span></code> :</p>
+<ol class="arabic simple">
+<li><p>Demandez quatre (4) cœurs CPU dans l’entête <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>.</p></li>
+<li><p>Séparez le gabarit de commande et les deux listes de valeurs par des
+séparateurs <code class="docutils literal notranslate"><span class="pre">:::</span></code>.</p></li>
+<li><p>La première liste de lettres correspond aux espèces connues. Chaque
+lettre est utilisée comme <strong>suffixe</strong> au nom de la base de données
+<code class="docutils literal notranslate"><span class="pre">spec_*</span></code> et au nom du fichier de sortie <code class="docutils literal notranslate"><span class="pre">results/align_*_*</span></code>.</p></li>
+<li><p>La deuxième liste de lettres correspond aux espèces inconnues. Chaque
+lettre est utilisée <strong>au milieu du nom</strong> de fichier Fasta <code class="docutils literal notranslate"><span class="pre">chr_*.fa</span></code>
+et du fichier de sortie <code class="docutils literal notranslate"><span class="pre">results/align_*_*</span></code>.</p></li>
+</ol>
+</li>
+<li><p>Sauvegardez le script et soumettez-le à l’ordonnanceur.</p></li>
+<li><p>Au final, il devrait y avoir 64 fichiers dans le répertoire <code class="docutils literal notranslate"><span class="pre">results</span></code>.
+Certains sont plus gros que d’autres, car des aligments ont été trouvés.</p></li>
+</ol>
+</section>
+</section>
+<section id="parallelisme-multi-fils-imbrique">
+<h2>Parallélisme multi-fils imbriqué<a class="headerlink" href="#parallelisme-multi-fils-imbrique" title="Lien vers cette rubrique">#</a></h2>
+<p>Pour les calculs multi-fils, la commande <code class="docutils literal notranslate"><span class="pre">parallel</span></code> ne doit pas lancer autant
+de processus qu’il y a de cœurs CPU alloués à la tâche : il y aurait alors
+plusieurs fils par cœur CPU. Il faut plutôt limiter le nombre de processus avec
+l’option <code class="docutils literal notranslate"><span class="pre">-P,--max-procs</span></code>.</p>
+<p>Par exemple, 10 cas à traiter avec un maximum de deux processus en parallèle :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>alice@narval1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>parallel<span class="w"> </span>-P<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="s1">&#39;echo {} &amp;&amp; sleep 3&#39;</span><span class="w"> </span>:::<span class="w"> </span><span class="o">{</span><span class="m">1</span>..10<span class="o">}</span>
+<span class="c1"># (3 secondes d&#39;attente)</span>
+<span class="m">1</span>
+<span class="m">2</span>
+<span class="c1"># (3 secondes d&#39;attente)</span>
+<span class="m">3</span>
+<span class="m">4</span>
+<span class="c1"># (3 secondes d&#39;attente)</span>
+<span class="m">5</span>
+<span class="m">6</span>
+<span class="c1"># (3 secondes d&#39;attente)</span>
+<span class="m">7</span>
+<span class="m">8</span>
+<span class="c1"># (3 secondes d&#39;attente)</span>
+<span class="m">9</span>
+<span class="m">10</span>
+</pre></div>
+</div>
+<p>Dans un script de tâche pour un programme OpenMP utilisant 4 fils d’exécution :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=my-para-mt-job</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="hll"><span class="c1">#SBATCH --cpus-per-task=64</span>
+</span><span class="c1">#SBATCH --time=1:00:00</span>
+<span class="c1">#SBATCH --account=def-sponsor</span>
+
+<span class="hll"><span class="nv">nthreads</span><span class="o">=</span><span class="m">4</span>
+</span><span class="hll"><span class="nv">nprocesses</span><span class="o">=</span><span class="k">$((</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">nthreads</span><span class="k">))</span>
+</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$nthreads</span>
+
+<span class="hll">parallel<span class="w"> </span>--max-procs<span class="w"> </span><span class="nv">$nprocesses</span><span class="w"> </span>./app<span class="w"> </span>&lt;options&gt;<span class="w"> </span><span class="o">{}</span><span class="w"> </span>:::<span class="w"> </span>val1<span class="w"> </span>val2<span class="w"> </span>...
+</span></pre></div>
+</div>
+</section>
+<section id="pour-en-savoir-plus">
+<h2>Pour en savoir plus<a class="headerlink" href="#pour-en-savoir-plus" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p>Documentation technique de l’Alliance : <a class="reference external" href="https://docs.alliancecan.ca/wiki/GNU_Parallel/fr">GNU Parallel</a></p></li>
+<li><p>Documentation officielle : <a class="reference external" href="https://www.gnu.org/software/parallel/sphinx.html">GNU Parallel</a></p>
+<ul>
+<li><p>Tutoriel : <a class="reference external" href="https://www.gnu.org/software/parallel/parallel_tutorial.html">GNU Parallel Tutorial</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="job_arrays.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Vecteurs de tâches</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="other_tools.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Autres outils</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pourquoi-pas-slurm">Pourquoi pas Slurm?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxe-de-la-commande-gnu-parallel">Syntaxe de la commande GNU Parallel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#une-seule-liste-de-valeurs">Une seule liste de valeurs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-preparer-des-sequences-dadn">Exercice - Préparer des séquences d’ADN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaisons-de-parametres">Combinaisons de paramètres</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-aligner-des-sequences-dadn">Exercice - Aligner des séquences d’ADN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelisme-multi-fils-imbrique">Parallélisme multi-fils imbriqué</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-en-savoir-plus">Pour en savoir plus</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Calcul Québec
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Calcul Québec.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
