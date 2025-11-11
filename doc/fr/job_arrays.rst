@@ -165,8 +165,8 @@ votre script avec :
 
 La longueur de la variable ``SLURM_ARRAY_TASK_ID`` peut rendre le script de
 tâche difficile à lire, particulièrement lorsque la variable est utilisée
-plusieurs fois. Pour cette raison, il est fréquent d’aliaser
-``SLURM_ARRAY_TASK_ID`` à un nom court :
+plusieurs fois. Pour cette raison, il est fréquent de créer un alias court pour
+``SLURM_ARRAY_TASK_ID`` :
 
 .. code-block:: bash
 
@@ -234,8 +234,8 @@ Exercice
 
 **Solution**
 
-- Comparez votre script avec ``solution/distrib-job-array.sh``.
-- La version ``solution/distrib-job-array-padded.sh`` ajoute des zéros non
+- Comparez votre script avec ``solution/dist-job-array.sh``.
+- La version ``solution/dist-job-array-padded.sh`` ajoute des zéros non
   significatifs.
 
 Vecteurs complexes
@@ -245,21 +245,22 @@ Vecteurs de tâches parallèles
 '''''''''''''''''''''''''''''
 
 Les vecteurs de tâches que nous avons vus jusqu’à maintenant répétaient tous une
-tâche sérielle. Toutefois, n’importe quelle tâche peut être répétée au moyen
+tâche séquentielle. Toutefois, n’importe quelle tâche peut être répétée au moyen
 d’un vecteur, incluant les tâches parallèles.
 
 Les ressources (temps, mémoire, cœurs CPU) demandées quand on soumet un vecteur
 s’appliquent à chaque tâche et non globalement. Par exemple, pour exécuter un
-programme MPI 10 fois avec 8 cœurs CPU chaque fois, le script suivant demande 8
-cœurs et non 80 :
+programme MPI 10 fois avec 8 cœurs CPU sur 1 nœud de calcul chaque fois, le
+script suivant demande 8 cœurs et non 80 :
 
 .. code-block:: bash
-    :emphasize-lines: 4,7
+    :emphasize-lines: 4-5,8
 
     #!/bin/bash
 
     #SBATCH --job-name=param-sweep
-    #SBATCH --ntasks=8
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=8
     #SBATCH --mem-per-cpu=2G
     #SBATCH --time=6:00:00
     #SBATCH --array=1-10

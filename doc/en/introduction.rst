@@ -30,7 +30,7 @@ When to use data parallelism
   .. figure:: ../images/multiple-files_en.svg
 
 - When there are multiple parameter combinations to test, we will want to do a
-  *parameter sweep*.
+  parameter sweep.
 
   ====  =====  =====
   Mass  Speed  Angle

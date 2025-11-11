@@ -54,7 +54,7 @@ exclude_patterns = []
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
     'logo': {
-        'text': 'Parallélisme de données sur les grappes (CIP202)',
+        'text': 'Gestion de grands lots de tâches (CIP202)',
         'image_light': '../images/logo.png'
     }
 }

@@ -186,7 +186,7 @@ Exercice - Préparer des séquences d’ADN
 
       #. Ajoutez ``parallel`` au début et enlevez l’indentation.
       #. Remplacez les deux itérateurs ``$spec`` par ``{}``.
-      #. Protégez le caractère ``>``, s’il y a lieu.
+      #. Protégez le caractère ``>`` avec des guillemets, s’il y a lieu.
       #. Ajoutez ``:::``, ainsi que les lettres de A à D, inclusivement.
 
    #. Refaites les mêmes étapes pour la commande ``makeblastdb ...``.
@@ -264,6 +264,7 @@ paramètres dans ``param.txt``, ainsi que l’argument ``::::`` pour spécifier
 ensuite ce nom de fichier :
 
 .. code-block:: bash
+    :emphasize-lines: 7
 
     [alice@narval1 gnu-parallel]$ cat exec-param.sh
     #!/bin/bash
@@ -295,6 +296,7 @@ avant leur exécution sur un nœud de calcul :
 Le script de tâche aura une commande ``parallel`` simplifiée :
 
 .. code-block:: bash
+    :emphasize-lines: 7
 
     [alice@narval1 gnu-parallel]$ cat exec-cmd.sh
     #!/bin/bash
@@ -366,21 +368,19 @@ En testant la correspondance de toutes les combinaisons ``{A,B,C,D}`` x
 #. Au final, il devrait y avoir 64 fichiers dans le répertoire ``results``.
    Certains sont plus gros que d’autres, car des aligments ont été trouvés.
 
-Nombre limité de cas en parallèle
----------------------------------
+Parallélisme multi-fils imbriqué
+--------------------------------
 
-Pour les calculs multi-fils (de 2 à 8 cœurs CPU), la commande ``parallel`` ne
-doit pas lancer autant de processus qu’il y a de cœurs CPU sur le nœeud ; on se
-retrouverait avec plusieurs fils par cœur CPU. Ainsi, la première chose à faire
-est de réduire le nombre de processus en simultané.
+Pour les calculs multi-fils, la commande ``parallel`` ne doit pas lancer autant
+de processus qu’il y a de cœurs CPU alloués à la tâche : il y aurait alors
+plusieurs fils par cœur CPU. Il faut plutôt limiter le nombre de processus avec
+l’option ``-P,--max-procs``.
 
-Pour ce faire, on utilise le paramètre ``-j`` ou ``--jobs`` qui permet de
-forcer une limite sur le nombre de processus lancés à la fois. Par exemple,
-10 cas à traiter avec un maximum de deux processus en simultané :
+Par exemple, 10 cas à traiter avec un maximum de deux processus en parallèle :
 
 .. code-block:: bash
 
-    [alice@narval1 ~]$ parallel -j 2 'echo {} && sleep 3' ::: {1..10}
+    [alice@narval1 ~]$ parallel -P 2 'echo {} && sleep 3' ::: {1..10}
     # (3 secondes d'attente)
     1
     2
@@ -400,6 +400,7 @@ forcer une limite sur le nombre de processus lancés à la fois. Par exemple,
 Dans un script de tâche pour un programme OpenMP utilisant 4 fils d’exécution :
 
 .. code-block:: bash
+    :emphasize-lines: 5,9-10,14
 
     #!/bin/bash
 
@@ -410,10 +411,11 @@ Dans un script de tâche pour un programme OpenMP utilisant 4 fils d’exécutio
     #SBATCH --account=def-sponsor
 
     nthreads=4
-    export OMP_NUM_THREADS=$nthreads
-    njobs=$((SLURM_CPUS_PER_TASK / nthreads))
+    nprocesses=$((SLURM_CPUS_PER_TASK / nthreads))
 
-    parallel --jobs $njobs ./app <options> {} ::: val1 val2 ...
+    export OMP_NUM_THREADS=$nthreads
+
+    parallel --max-procs $nprocesses ./app <options> {} ::: val1 val2 ...
 
 Pour en savoir plus
 -------------------
